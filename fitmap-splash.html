@@ -4,17 +4,19 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <link rel="stylesheet" href="../style.css" />
+    <link rel="stylesheet" href="./style.css" />
   </head>
   <body>
     <div class="Container">
-      <img id="logo" src="../Assets/images/fitmaplogo.png" alt="Image" />
+      <img id="logo" src="./Assets/images/fitmaplogo.png" alt="Image" />
       <p class="logo-name">Fitmap</p>
     </div>
   </body>
   <script>
-    document.addEventListener("click", () => {
-      window.location.href = "./onboarding1.html";
-    });
+    window.onload = function () {
+      setTimeout(function () {
+        window.location.href = "./onboarding1";
+      }, 3000);
+    };
   </script>
 </html>

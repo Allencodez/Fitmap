@@ -15,11 +15,11 @@
   <body>
     <div class="payment-page">
       <div>
-        <div id="input-box">
-          <!-- <img src="./Assets/Icons/search.png" alt="" /> -->
-          <label for="text"></label>
+        <div class="inputBox">
+          <img id="searchIcon" src="../Assets/Icons/search.png" alt="" />
+
           <input
-            class="input-field"
+            id="inputField"
             type="text"
             placeholder="Search gyms, yoga studios, fitness centers"
           />
@@ -30,15 +30,24 @@
         </div>
 
         <div class="P-view">
-          <div id="P-list-view">List View</div>
-          <div id="M-list-view">Map View</div>
+          <a href="../pages/payment.html"
+            ><button class="P-list-view active">List View</button></a
+          >
+          <a href="../map-view.html"
+            ><button class="P-list-view">Map View</button></a
+          >
         </div>
 
-        <div>
+        <div id="noResults">No gyms found matching your search.</div>
+
+        <div
+          class="Jacker"
+          data-name="FitLife Premium Port Harcourt NO 20 GRA Phase III Port Harcourt"
+        >
           <div class="jared">
             <div>
               <img
-                src="Assets/Icons/love.png"
+                src="../Assets/Icons/love.png"
                 id="like-button"
                 alt="like-button"
               />
@@ -48,35 +57,46 @@
             </div>
           </div>
 
-          <div class="P-slide">
+          <div
+            class="P-slide"
+            data-name="FitLife Premium Port Harcourt NO 20 GRA Phase III Port Harcourt"
+          >
             <div class="P-cards">
               <div>
                 <div class="P-text">Fitlife Premium Gym</div>
                 <div class="star">
-                  <img src="./Assets/Icons/location.png" alt="star-icon" />
+                  <img src="../Assets/Icons/location.png" alt="star-icon" />
                   <div class="s-text oya">NO 20 GRA Phase III</div>
                 </div>
                 <div class="s-text ona">Port Harcourt . 0.8KM</div>
                 <div class="star">
-                  <img src="./Assets/Icons/star.png" alt="star-icon" />
+                  <img src="../Assets/Icons/star.png" alt="star-icon" />
                   <div class="s-text">4.6 (231 reviews)</div>
                 </div>
               </div>
 
               <div class="boss">
                 <div class="s-text">Traditional Gym</div>
-                <div class="s-text">$20,000/Month</div>
-                <div class="p-btn">Pay Here</div>
+                <div class="s-text">N20,000/Month</div>
+                <a href="./payment-method.html"
+                  ><div class="p-btn">Pay Here</div></a
+                >
               </div>
             </div>
           </div>
         </div>
 
-        <div>
-          <div class="jareda">
+        <div
+          class="Jacker"
+          data-name="Zenith Premium Gym NO 20 NTA Road Port Harcourt Open"
+        >
+          <div
+            class="jareda"
+            data-name="Zenith Premium Gym NO 20 NTA Road Port Harcourt"
+          >
             <div>
               <img
-                src="Assets/Icons/love.png"
+                src="../Assets/Icons/love.png"
                 id="like-button"
                 alt="like-button"
               />
@@ -86,35 +106,43 @@
             </div>
           </div>
 
-          <div class="P-slide">
-            <div class="P-cards">
+          <div
+            class="P-slide"
+            data-name="Zenith Premium Gym NO 20 NTA Road Port Harcourt"
+          >
+            <div
+              class="P-cards"
+              data-name="Zenith Premium Gym NO 20 NTA Road Port Harcourt"
+            >
               <div>
                 <div class="P-text">Zenith Premium Gym</div>
                 <div class="star">
-                  <img src="./Assets/Icons/location.png" alt="star-icon" />
+                  <img src="../Assets/Icons/location.png" alt="star-icon" />
                   <div class="s-text oya">NO 20 NTA ROAD</div>
                 </div>
                 <div class="s-text ona">Port Harcourt . 1.2KM</div>
                 <div class="star">
-                  <img src="./Assets/Icons/star.png" alt="star-icon" />
+                  <img src="../Assets/Icons/star.png" alt="star-icon" />
                   <div class="s-text">2.5 (150 reviews)</div>
                 </div>
               </div>
 
               <div class="boss">
                 <div class="s-text">Traditional Gym</div>
-                <div class="s-text">$10,000/Month</div>
-                <div class="p-btn">Pay Here</div>
+                <div class="s-text">N10,000/Month</div>
+                <a href="./payment-method.html"
+                  ><div class="p-btn">Pay Here</div></a
+                >
               </div>
             </div>
           </div>
         </div>
 
-        <div>
-          <div class="jaredo">
-            <div>
+        <div class="Jacker" data-name="Serenity Yoga Studio Port Harcourt">
+          <div class="jared">
+            <div class="Jacker" data-name="Serenity Yoga Studio Port Harcourt">
               <img
-                src="Assets/Icons/love.png"
+                src="../Assets/Icons/love.png"
                 id="like-button"
                 alt="like-button"
               />
@@ -129,30 +157,35 @@
               <div>
                 <div class="P-text">Serenity Yoga Studio</div>
                 <div class="star">
-                  <img src="./Assets/Icons/location.png" alt="star-icon" />
+                  <img src="../Assets/Icons/location.png" alt="star-icon" />
                   <div class="s-text oya">NO 50 Odili Estate</div>
                 </div>
                 <div class="s-text ona">Port Harcourt . 0.8KM</div>
                 <div class="star">
-                  <img src="./Assets/Icons/star.png" alt="star-icon" />
+                  <img src="../Assets/Icons/star.png" alt="star-icon" />
                   <div class="s-text">7.5 (400 reviews)</div>
                 </div>
               </div>
 
               <div class="boss">
                 <div class="s-text">Yoga Studio</div>
-                <div class="s-text">$15,000/Month</div>
-                <div class="p-btn">Pay Here</div>
+                <div class="s-text">N15,000/Month</div>
+                <a href="./payment-method.html"
+                  ><div class="p-btn">Pay Here</div></a
+                >
               </div>
             </div>
           </div>
         </div>
 
-        <div>
+        <div
+          class="Jacker"
+          data-name="Iron Cross CrossFit NO 1Ozuoba Road Port Harcourt"
+        >
           <div class="jared">
             <div>
               <img
-                src="Assets/Icons/love.png"
+                src="../Assets/Icons/love.png"
                 id="like-button"
                 alt="like-button"
               />
@@ -162,35 +195,43 @@
             </div>
           </div>
 
-          <div class="P-slide">
+          <div
+            class="P-slide"
+            data-name="Iron CrossFit NO 1 Ozuoba Road Port Harcourt"
+          >
             <div class="P-cards">
               <div>
                 <div class="P-text">Iron Cross CrossFit</div>
                 <div class="star">
-                  <img src="./Assets/Icons/location.png" alt="star-icon" />
+                  <img src="../Assets/Icons/location.png" alt="star-icon" />
                   <div class="s-text oya">NO 1 Ozuoba Road</div>
                 </div>
                 <div class="s-text ona">Port Harcourt . 0.8KM</div>
                 <div class="star">
-                  <img src="./Assets/Icons/star.png" alt="star-icon" />
+                  <img src="../Assets/Icons/star.png" alt="star-icon" />
                   <div class="s-text">4.7 (89 reviews)</div>
                 </div>
               </div>
 
               <div class="boss">
                 <div class="s-text">Traditional Gym</div>
-                <div class="s-text">$9,000/Month</div>
-                <div class="p-btn">Pay Here</div>
+                <div class="s-text">N9,000/Month</div>
+                <a href="./payment-method.html">
+                  <div class="p-btn">Pay Here</div></a
+                >
               </div>
             </div>
           </div>
         </div>
 
-        <div>
+        <div
+          class="Jacker"
+          data-name="Urban Fitness 24/7 NO 1 GRA Phase I Port Harcourt"
+        >
           <div class="jared">
             <div>
               <img
-                src="Assets/Icons/love.png"
+                src="../Assets/Icons/love.png"
                 id="like-button"
                 alt="like-button"
               />
@@ -201,29 +242,114 @@
           </div>
 
           <div class="P-slide">
-            <div class="P-cards">
+            <div class="P-cards shift">
               <div>
-                <div class="P-text">Urban Fitness 24/</div>
+                <div class="P-text">Urban Fitness 24/7</div>
                 <div class="star">
-                  <img src="./Assets/Icons/location.png" alt="star-icon" />
+                  <img src="../Assets/Icons/location.png" alt="star-icon" />
                   <div class="s-text oya">NO 1 GRA Phase I</div>
                 </div>
                 <div class="s-text ona">Port Harcourt . 0.8KM</div>
                 <div class="star">
-                  <img src="./Assets/Icons/star.png" alt="star-icon" />
+                  <img src="../Assets/Icons/star.png" alt="star-icon" />
                   <div class="s-text">4.2 (412 reviews)</div>
                 </div>
               </div>
 
               <div class="boss">
                 <div class="s-text">Traditional Gym</div>
-                <div class="s-text">$10,000/Month</div>
-                <div class="p-btn">Pay Here</div>
+                <div class="s-text">N10,000/Month</div>
+                <a href="./payment-method.html"
+                  ><div class="p-btn">Pay Here</div></a
+                >
               </div>
             </div>
           </div>
         </div>
       </div>
     </div>
+
+    <section>
+      <div class="foot">
+        <div class="tags">
+          <a href="../pages/homepage.html"
+            ><img
+              class="tags-home"
+              src="../Assets/Icons/material-symbols_home-outline.png"
+              alt="#"
+          /></a>
+          <a href="../pages/homepage.html"> <p class="tag-names">Home</p></a>
+        </div>
+
+        <div class="tags">
+          <a href="./payment.html"
+            ><img
+              class="tags-payment"
+              src="../Assets/Icons/fluent_payment-24-regular.png"
+              alt="#"
+          /></a>
+          <a href="./payment.html"><p class="tag-names">Payment</p></a>
+        </div>
+
+        <div class="tags">
+          <a href="./class.html"
+            ><img
+              class="tags-classes"
+              src="../Assets/Icons/uil_calender.png"
+              alt=""
+          /></a>
+          <a href="./class.html"> <p class="tag-names">Classes</p></a>
+        </div>
+
+        <div class="tags">
+          <a href="./profile.html">
+            <img
+              class="tags-profile"
+              src="../Assets/Icons/gg_profile.png"
+              alt=""
+          /></a>
+          <a href="./profile.html"> <p class="tag-names">Profile</p></a>
+        </div>
+
+        <div class="tags">
+          <a href="./more.html"
+            ><img class="tags-more" src="../Assets/Icons/Vector (3).png" alt=""
+          /></a>
+          <a href="./more.html"><p class="tag-name-more">More</p></a>
+        </div>
+      </div>
+    </section>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const searchInput = document.getElementById("inputField");
+        const gymCards = document.querySelectorAll(".Jacker");
+        const noResults = document.getElementById("noResults");
+
+        searchInput.addEventListener("input", function () {
+          const query = searchInput.value.trim().toLowerCase();
+
+          let visibleCount = 0;
+
+          gymCards.forEach((card) => {
+            const searchableText = card.getAttribute("data-name").toLowerCase();
+
+            if (searchableText.includes(query)) {
+              card.classList.remove("hidden");
+              visibleCount++;
+            } else {
+              card.classList.add("hidden");
+            }
+          });
+
+          // Show/hide no results message
+          if (visibleCount === 0 && query !== "") {
+            noResults.style.display = "block";
+          } else {
+            noResults.style.display = "none";
+          }
+        });
+      });
+    </script>
   </body>
 </html>
