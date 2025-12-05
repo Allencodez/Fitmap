@@ -28,22 +28,23 @@
            </div>
 
             <div class="content">
-                <div class="image-pfp">
+               <a href="./profile.html"> <div class="image-pfp">
                  <img
                  src="../Assets/images/aceb6e232b6272af327c34340242d1f81e5813a2.jpg"
                  alt="#"
                  />
-                </div>
+                </div></a>
         
-                <div class="image">
+               <a href="./class.html"> <div class="image">
                   <img src="../Assets/Icons/bell (1).png" alt="#" />
-                </div>
+                </div></a>
             </div>
        </div>
 
         <div class="input-field">
           <label for="text"></label>
-          <input id="inputPlace" type="text" placeholder="Search" />
+          <img id="search" src="../Assets/Icons/search.png" alt="">
+          <input id="inputPlace" style="font-size: 17px;" type="text" placeholder="Search" />
         </div>
 
        <div class="card">
@@ -149,7 +150,7 @@
         const gymCards = document.querySelectorAll(".inner-cards");
         const noResults = document.getElementById("noResults");
 
-        searchInput.addEventListener("input", function () {
+  searchInput.addEventListener("input", function () {
           const query = searchInput.value.trim().toLowerCase();
 
           let visibleCount = 0;
@@ -171,6 +172,22 @@
           } else {
             noResults.style.display = "none";
           }
+
+          // make page scrollable when searching
+          if (query !== "") {
+            document.body.classList.add('search-active');
+          } else {
+            document.body.classList.remove('search-active');
+          }
+        });
+        // footer active state handling
+        const footerTags = Array.from(document.querySelectorAll('.foot .tags'));
+        function clearFooterActive() { footerTags.forEach(t => t.classList.remove('active')); }
+        footerTags.forEach(tag => {
+          tag.addEventListener('click', (e) => {
+            clearFooterActive();
+            tag.classList.add('active');
+          });
         });
       });
     </script>

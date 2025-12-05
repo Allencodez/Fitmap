@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Google Sign-in Callback</title>
+  </head>
+  <body>
+    <p>Processing Google sign-in…</p>
+    <script>
+      // This page receives the access_token via URL fragment from Google's implicit flow,
+      // fetches userinfo and then posts it back to the opener window using postMessage.
+      (async function () {
+        try {
+          // parse fragment
+          const hash = window.location.hash.substring(1);
+          const params = new URLSearchParams(hash);
+          const accessToken = params.get("access_token");
+          if (!accessToken) {
+            window.close();
+            return;
+          }
+
+          // fetch userinfo
+          const resp = await fetch(
+            "https://www.googleapis.com/oauth2/v3/userinfo",
+            {
+              headers: { Authorization: "Bearer " + accessToken },
+            }
+          );
+          if (!resp.ok) {
+            window.close();
+            return;
+          }
+          const user = await resp.json();
+
+          // send user to opener
+          if (window.opener && !window.opener.closed) {
+            window.opener.postMessage(
+              { type: "google-signin", user },
+              window.location.origin || "*"
+            );
+          }
+        } catch (e) {
+          // ignore
+        }
+        // close popup after a short delay
+        setTimeout(() => window.close(), 500);
+      })();
+    </script>
+  </body>
+</html>

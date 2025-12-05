@@ -28,14 +28,50 @@
               class="wraps login-p-text"
               type="email"
               placeholder="solotech283@gmail.com"
+              required
+              id="emailAuthInput"
             />
           </div>
         </div>
 
         <div class="confirm-btn">
-          <a href="./sign-in.html"><button>Submit</button></a>
+          <button id="emailAuthBtn" disabled>Submit</button>
         </div>
       </div>
+      <p
+        id="emailAuthMsg"
+        class="validation-msg"
+        style="
+          display: none;
+          color: #666;
+          font-family: poppins;
+          font-size: 0.9rem;
+          margin-top: 8px;
+        "
+        aria-live="polite"
+      >
+        Enter a valid email address to continue.
+      </p>
     </section>
   </body>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const input = document.getElementById("emailAuthInput");
+      const btn = document.getElementById("emailAuthBtn");
+      const emailAuthMsg = document.getElementById("emailAuthMsg");
+      function validEmail(v) {
+        return /^\S+@\S+\.\S+$/.test(v);
+      }
+      function validate() {
+        btn.disabled = !input.value || !validEmail(input.value.trim());
+        if (emailAuthMsg)
+          emailAuthMsg.style.display = btn.disabled ? "block" : "none";
+      }
+      input.addEventListener("input", validate);
+      btn.addEventListener("click", function () {
+        if (!btn.disabled) window.location.href = "./sign-in.html";
+      });
+      validate();
+    });
+  </script>
 </html>

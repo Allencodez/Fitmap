@@ -66,11 +66,22 @@
             <a href=""><label class="labels">Remember Me</label></a>
           </div>
 
-          <a href="sign-in.html">
-            <div class="sign-up-btn">
-              <button>Sign Up</button>
-            </div>
-          </a>
+          <div class="sign-up-btn">
+            <button id="signupBtn" disabled>Sign Up</button>
+          </div>
+          <p
+            id="signupMsg"
+            class="validation-msg"
+            style="
+              display: none;
+              color: #666;
+              font-size: 0.9rem;
+              margin-top: 8px;
+            "
+            aria-live="polite"
+          >
+            Please fill in all required fields correctly to enable Sign Up.
+          </p>
 
           <div class="create-account">
             <div class="account-line"></div>
@@ -98,4 +109,74 @@
       </div>
     </section>
   </body>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const inputs = Array.from(document.querySelectorAll("input[required]"));
+      const signupBtn = document.getElementById("signupBtn");
+      const signupMsg = document.getElementById("signupMsg");
+
+      function validate() {
+        let valid = true;
+        inputs.forEach((i) => {
+          if (!i.value.trim()) valid = false;
+          if (i.type === "email" && i.value) {
+            // simple email check
+            const re = /^\S+@\S+\.\S+$/;
+            if (!re.test(i.value.trim())) valid = false;
+          }
+          if (i.type === "password" && i.value) {
+            if (i.value.trim().length < 6) valid = false;
+          }
+        });
+        signupBtn.disabled = !valid;
+        if (signupMsg) {
+          if (!valid) {
+            // show specific password length message if that's the issue
+            const pass = document.querySelector("input[type=password]");
+            if (pass && pass.value && pass.value.trim().length < 6) {
+              signupMsg.style.display = "block";
+              signupMsg.style.color = "red";
+              signupMsg.textContent = "Password must be at least 6 characters.";
+            } else {
+              signupMsg.style.display = "block";
+              signupMsg.style.color = "#666";
+              signupMsg.textContent =
+                "Please fill in all required fields correctly to enable Sign Up.";
+            }
+          } else {
+            signupMsg.style.display = "none";
+          }
+        }
+      }
+
+      inputs.forEach((i) => i.addEventListener("input", validate));
+
+      // Prevent accidental navigation; when valid, navigate to sign-in (simulate submit)
+      signupBtn.addEventListener("click", function (e) {
+        if (signupBtn.disabled) {
+          e.preventDefault();
+          return;
+        }
+        // gather values: expected order in markup is name, email, password
+        const reqs = Array.from(document.querySelectorAll("input[required]"));
+        const nameInput = reqs.find((i) => i.type === "text");
+        const emailInput = reqs.find((i) => i.type === "email");
+        const passInput = reqs.find((i) => i.type === "password");
+        const user = {
+          name: nameInput ? nameInput.value.trim() : "",
+          email: emailInput ? emailInput.value.trim() : "",
+          password: passInput ? passInput.value.trim() : "",
+        };
+        try {
+          localStorage.setItem("fitmap_user", JSON.stringify(user));
+        } catch (e) {
+          // ignore storage errors
+        }
+        // on success, go to sign-in
+        window.location.href = "sign-in.html";
+      });
+
+      validate();
+    });
+  </script>
 </html>

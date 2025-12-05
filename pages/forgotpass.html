@@ -28,6 +28,8 @@
               class="login-p-text"
               type="password"
               placeholder="********"
+              id="newPass"
+              required
             />
           </div>
           <p class="re-name-text">Re-Enter Password</p>
@@ -36,14 +38,119 @@
               class="login-p-text"
               type="password"
               placeholder="********"
+              id="rePass"
+              required
             />
           </div>
         </div>
 
         <div class="confirm-btn">
-          <a href="sign-in.html"> <button>Confirm</button></a>
+          <button id="confirmPassBtn" disabled>Confirm</button>
         </div>
       </div>
+      <p
+        id="forgotMsg"
+        class="validation-msg"
+        style="
+          display: none;
+          color: #666;
+          font-family: poppins;
+          font-size: 0.9rem;
+          margin-top: 8px;
+        "
+        aria-live="polite"
+      >
+        Please enter matching passwords to enable Confirm.
+      </p>
+      <p
+        id="forgotSuccess"
+        style="
+          display: none;
+          color: green;
+          font-family: poppins;
+          font-size: 0.95rem;
+          margin-top: 8px;
+        "
+        aria-live="polite"
+      >
+        Password updated successfully — redirecting to Sign In…
+      </p>
     </section>
   </body>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const newPass = document.getElementById("newPass");
+      const rePass = document.getElementById("rePass");
+      const btn = document.getElementById("confirmPassBtn");
+      const forgotMsg = document.getElementById("forgotMsg");
+
+      function validate() {
+        const a = newPass.value.trim();
+        const b = rePass.value.trim();
+        // Enforce minimum password length
+        if (!a || !b) {
+          btn.disabled = true;
+          if (forgotMsg) {
+            forgotMsg.style.display = "block";
+            forgotMsg.style.color = "#666";
+            forgotMsg.textContent =
+              "Please enter matching passwords to enable Confirm.";
+          }
+          return;
+        }
+
+        if (a.length < 6) {
+          btn.disabled = true;
+          if (forgotMsg) {
+            forgotMsg.style.display = "block";
+            forgotMsg.style.color = "red";
+            forgotMsg.textContent = "Password must be at least 6 characters.";
+          }
+          return;
+        }
+
+        if (a !== b) {
+          btn.disabled = true;
+          if (forgotMsg) {
+            forgotMsg.style.display = "block";
+            forgotMsg.style.color = "red";
+            forgotMsg.textContent = "Passwords do not match.";
+          }
+          return;
+        }
+
+        // valid
+        btn.disabled = false;
+        if (forgotMsg) forgotMsg.style.display = "none";
+      }
+
+      newPass.addEventListener("input", validate);
+      rePass.addEventListener("input", validate);
+
+      btn.addEventListener("click", function () {
+        if (btn.disabled) return;
+        // Save new password to localStorage for the user record (single-user support)
+        try {
+          const userKey = "fitmap_user";
+          const raw = localStorage.getItem(userKey);
+          let user = raw ? JSON.parse(raw) : {};
+          user.password = newPass.value.trim();
+          localStorage.setItem(userKey, JSON.stringify(user));
+        } catch (e) {
+          // ignore storage errors
+        }
+        // show success then redirect shortly
+        const success = document.getElementById("forgotSuccess");
+        if (success) {
+          success.style.display = "block";
+          if (forgotMsg) forgotMsg.style.display = "none";
+        }
+        setTimeout(() => {
+          window.location.href = "sign-in.html";
+        }, 1500);
+      });
+
+      validate();
+    });
+  </script>
 </html>

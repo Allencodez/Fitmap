@@ -130,3 +130,547 @@ width: 455px; border: none; } #pm-text-5 { font-family: poppins; margin-left:
           </div>
           
         </div>
+
+
+
+
+        css2?family
+
+
+
+
+
+
+        @font-face {
+  font-family: poppins;
+  src: url("./Assets//fonts/Poppins-Medium.ttf");
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: poppins;
+}
+
+:root {
+  --main-color: #121212;
+  --primary-color: rgba(157, 152, 152, 1);
+  --secondary-color: #a4eb3f;
+  --text-color: white;
+  --background-color: #2a2a2a;
+  --font-family: poppins;
+}
+
+.commencer {
+  background-color: var(--background-color);
+  width: 100vw;
+  /* margin: auto; */
+}
+
+.sticky-bar {
+  position: sticky;
+  top: 0;
+  z-index: 999;
+  background-color: var(--background-color);
+  padding-bottom: 10px;
+}
+
+.Container {
+  width: 100vw;
+  padding: 20px;
+}
+
+.wrapper {
+  display: flex;
+  justify-content: space-between;
+  margin-right: 20px;
+}
+
+.content {
+  display: flex;
+  gap: 15px;
+  margin-top: 25px;
+}
+
+.header-txt {
+  color: var(--text-color);
+  font-family: var(--font-family);
+  margin-top: 20px;
+  /* margin-bottom: 10px; */
+}
+
+.image-pfp img {
+  height: 25px;
+  width: 25px;
+  border-radius: 50%;
+}
+
+#search {
+  margin-left: 10px;
+  top: 48px;
+  position: relative;
+}
+
+.input-field {
+  font-size: 20px;
+  width: 90vw;
+  margin-bottom: 20px;
+  position: sticky;
+  top: 0;
+  /* padding: 10px; */
+}
+
+.input-field input {
+  outline: none;
+  border-radius: 25px;
+  /* padding: 12px; */
+  background-color: var(--primary-color);
+  background-position: 15px 16px;
+  background-repeat: no-repeat;
+  padding: 15px 10px 15px 35px;
+  width: 100%;
+}
+
+input::placeholder {
+  font-size: 17px;
+  font-family: poppins;
+  color: var(--main-color);
+  margin-top: 15px;
+  padding-left: 10px;
+}
+
+.card {
+  display: flex;
+  align-items: center;
+  height: 200px;
+  width: 90vw;
+  border-radius: 15px;
+  background-image: url("Assets/images/5f2032bcfeed00241e832696bc342576534ef0a5.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.card-text-1 {
+  display: flex;
+  flex-direction: column;
+  margin-top: 30px;
+  justify-content: center;
+  color: var(--text-color);
+  margin-bottom: 50px;
+  margin-left: 20px;
+}
+
+.card-text-2 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--secondary-color);
+  border-radius: 15px;
+  width: 80%;
+  padding: 10px;
+  margin-left: 20px;
+  color: #121212;
+  cursor: pointer;
+}
+
+.tabs {
+  margin-top: 23px;
+  color: var(--main-color);
+  padding: 5px;
+  gap: 5px;
+  align-items: center;
+  width: 90vw;
+  display: flex;
+  flex-direction: row;
+  overflow-x: auto;
+  overflow-y: hidden;
+  white-space: nowrap;
+  scroll-behavior: smooth;
+  scrollbar-width: none;
+}
+
+.hash {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.tabs .tab-active {
+  background-color: var(--text-color);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 5px 35px;
+  border-radius: 25px;
+  width: 10%;
+}
+
+.tabs .tab {
+  background-color: var(--primary-color);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 15px;
+  padding: 5px 15px;
+  margin: 8px;
+  width: 100px;
+}
+
+.tab {
+  color: var(--main-color);
+}
+
+.hash .tab-1 {
+  color: black;
+  padding: 5px 10px;
+  display: inline;
+  align-items: center;
+  border-radius: 15px;
+  background-color: var(--primary-color);
+}
+
+a {
+  text-decoration: none;
+}
+
+.card-slider {
+  background-color: var(--background-color);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  gap: 15px;
+  /* height: 200%; */
+  overflow: auto;
+}
+
+.inner-cards {
+  color: var(--text-color);
+  padding: 12px 10px;
+  height: 200px;
+  gap: 8px 5px;
+  width: 92vw;
+  border-radius: 15px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-color: rgba(0, 0, 0, 0.4);
+  background-blend-mode: darken;
+  margin-bottom: 10px;
+  overflow: auto;
+}
+
+.inner-cards.hidden {
+  display: none;
+  opacity: 0;
+  transform: translateY(-10px);
+  height: 0;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+#noResults {
+  text-align: center;
+  color: rgb(139, 37, 37);
+  font-size: 20px;
+  font-family: poppins;
+  display: none;
+  margin-bottom: 90px;
+}
+
+.card-1 {
+  background-image: url("Assets/images/d5c66f5a07b774d755b9b192d3895f5767213824.jpg");
+}
+
+.card-2 {
+  background-image: url("Assets/images/e06a4e0acfdca26083a454361717d46fb4e9faa1.jpg");
+}
+
+.card-3 {
+  background-image: url("Assets/images/85e37aa588f125f9824a2402a14ecfc6253576cd.jpg");
+}
+
+.card-4 {
+  background-image: url("Assets/images/35885e5144f603e4a105a6dd4af825200826c2e7.jpg");
+  margin-bottom: 120px;
+}
+
+.card-info {
+  border-radius: 10px;
+  border: 2.5px solid var(--secondary-color);
+  width: 120px;
+  text-align: center;
+  margin-top: 40px;
+  margin-left: 65%;
+  padding: 3px;
+  color: var(--text-color);
+}
+
+.card-text {
+  margin-top: 10px;
+  color: var(--text-color);
+  margin-left: 20px;
+}
+
+.foot {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 100vw;
+  height: 12vh;
+  cursor: pointer;
+  position: sticky;
+  overflow-x: auto;
+  overflow-y: hidden;
+  z-index: 2;
+  bottom: 0;
+  position: fixed;
+  background-color: #2a2a2a;
+  /* margin-top: 30px; */
+}
+
+.foot {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 100vw;
+  height: 12vh;
+  cursor: pointer;
+  position: sticky;
+  overflow-x: auto;
+  overflow-y: hidden;
+  z-index: 2;
+  bottom: 0;
+  position: fixed;
+  background-color: #2a2a2a;
+  margin-top: 30px;
+}
+
+.foot .tags {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.harp {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.tags-classes {
+  margin-bottom: 1px;
+}
+
+.tags-profile {
+  margin-bottom: 1px;
+}
+
+.tags-more {
+  margin-top: 2.5px;
+}
+
+.tag-names {
+  color: var(--text-color);
+}
+
+.tag-name-more {
+  color: var(--text-color);
+  top: 0;
+  margin-top: 3px;
+}
+
+
+
+
+<html>
+
+</html>
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../styles.css" />
+  </head>
+  <body>
+   
+      
+      <section class="commencer">
+
+
+       <div class="Container">
+        
+
+        <div class="wrapper">
+           <div class="header-txt">
+              <p>Hi, Solomon</p>
+              <p>Let's start training</p>
+           </div>
+
+            <div class="content">
+               <a href="./profile.html"> <div class="image-pfp">
+                 <img
+                 src="../Assets/images/aceb6e232b6272af327c34340242d1f81e5813a2.jpg"
+                 alt="#"
+                 />
+                </div></a>
+        
+               <a href="./class.html"> <div class="image">
+                  <img src="../Assets/Icons/bell (1).png" alt="#" />
+                </div></a>
+            </div>
+       </div>
+
+        <div class="input-field">
+          <label for="text"></label>
+          <img id="search" src="../Assets/Icons/search.png" alt="">
+          <input id="inputPlace" style="font-size: 17px;" type="text" placeholder="Search" />
+        </div>
+
+       <div class="card">
+          <div>
+             <div class="card-text-1">
+               <p>Experience World-Class</p>
+               <p>Fitness With Us.</p>
+             </div>
+            <a href="./class.html"> <div class="card-text-2">Start Your Journey</div></a>
+          </div>
+       </div>
+
+       <div class="tabs">
+         <div class="hash">
+           <div class="wraps">
+           <a href="./homepage.html"> <div class="tab-active">All</div></a>
+           </div>
+
+           <div class="hash">
+             <a href="./payment.html"><div class="tab-1">Gym Centers</div></a>
+            <a href="./Amenities.html"> <div class="tab">Amenities</div></a>
+            <a href="./trainers.html"> <div class="tab">Trainers</div></a>
+            <a href="../pages/equipments.html"> <div class="tab">Equipment</div></a>
+           </div>
+         </div>
+       </div>
+
+       <div id="noResults">No results found matching your search.</div>
+
+       </section>
+
+     <section class="card-slider">
+
+      <div class="inner-cards card-1" data-name="Find gym location nearest to you. Each center is equipped with state of the art facilities.">
+        <div class="card-text">
+          <p>Find gym location nearest to you.</p>
+          <p>Each center is equipped with state of</p>
+          <p>the art facilities.</p>
+          <a href="./Amenities.html"><p class="card-info">See more ></p></a>
+        </div>
+      </div>
+
+      <div class="inner-cards card-2" data-name="Enjoy world-class facilites designed to enhance your fitness journey and provide ultimate comfort.">
+        <div class="card-text">
+           <p>Enjoy world-class facilites designed</p>
+           <p>to enhance your fitness journey and</p>
+           <p>provide ultimate comfort.</p>
+          <a href="../pages/payment.html"> <p class="card-info">See more ></p></a>
+        </div>
+      </div>
+
+
+      <div class="inner-cards card-3" data-name="Join our diverse range of group fitness classes led by certified instructors for all fitness levels.">
+        <div class="card-text">
+           <p>Join our diverse range of group fitness classes led by certified instructors for all fitness levels.</p>
+          <a href="./class.html"> <p class="card-info">See more ></p></a>
+        </div>
+      </div>
+
+      <div class="inner-cards card-4" data-name="Meet Our Expert Trainers">
+        <div class="card-text">
+          <p>Meet Our Expert Trainers</p>
+         <a href="./trainers.html"> <p class="card-info">See more ></p></a>
+        </div>
+      </div>
+     </section>
+
+   
+
+    <section>
+      <div class="foot">
+
+        <div class="tags">
+             <a href="./homepage.html"> <img class="tags-home" src="../Assets/Icons/material-symbols_home-outline.png" alt="#"></a>
+             <a href="./homepage.html"><p class="tag-names">Home</p></a>
+        </div>
+
+        <div class="tags">
+         <a href="payment.html"><img class="tags-payment" src="../Assets/Icons/fluent_payment-24-regular.png" alt="#"></a>
+           <a href="./payment.html"></a> <p class="tag-names">Payment</p></a>
+        </div>
+
+        <div class="tags">
+         <a href="./class.html"> <img class="tags-classes" src="../Assets/Icons/uil_calender.png" alt=""></a>
+         <a href="./class.html"> <p class="tag-names">Classes</p></a>
+        </div>
+
+        <div class="tags">
+        <a href="./profile.html"> <img class="tags-profile" src="../Assets/Icons/gg_profile.png" alt=""></a>
+          <a href="./profile.html"><p class="tag-names">Profile</p></a>
+        </div>
+
+        <div class="tags">
+          <a href="./more.html"> <img class="tags-more" src="../Assets/Icons/Vector (3).png" alt=""></a>
+          <a href="./more.html"> <p class="tag-name-more">More</p></a>
+        </div>
+       </div>
+     </section>
+
+      <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const searchInput = document.getElementById("inputPlace");
+        const gymCards = document.querySelectorAll(".inner-cards");
+        const noResults = document.getElementById("noResults");
+
+        searchInput.addEventListener("input", function () {
+          const query = searchInput.value.trim().toLowerCase();
+
+          let visibleCount = 0;
+
+          gymCards.forEach((card) => {
+            const searchableText = card.getAttribute("data-name").toLowerCase();
+
+            if (searchableText.includes(query)) {
+              card.classList.remove("hidden");
+              visibleCount++;
+            } else {
+              card.classList.add("hidden");
+            }
+          });
+
+          // Show/hide no results message
+          if (visibleCount === 0 && query !== "") {
+            noResults.style.display = "block";
+          } else {
+            noResults.style.display = "none";
+          }
+        });
+      });
+    </script>
+  </body>
+</html>
