@@ -43,7 +43,7 @@
 
         <div class="input-field">
           <label for="text"></label>
-          <input type="text" placeholder="Search" />
+          <input id="inputPlace" type="text" placeholder="Search" />
         </div>
 
        <div class="card">
@@ -71,12 +71,13 @@
          </div>
        </div>
 
+       <div id="noResults">No results found matching your search.</div>
 
        </section>
 
      <section class="card-slider">
 
-      <div class="inner-cards card-1">
+      <div class="inner-cards card-1" data-name="Find gym location nearest to you. Each center is equipped with state of the art facilities.">
         <div class="card-text">
           <p>Find gym location nearest to you.</p>
           <p>Each center is equipped with state of</p>
@@ -85,7 +86,7 @@
         </div>
       </div>
 
-      <div class="inner-cards card-2">
+      <div class="inner-cards card-2" data-name="Enjoy world-class facilites designed to enhance your fitness journey and provide ultimate comfort.">
         <div class="card-text">
            <p>Enjoy world-class facilites designed</p>
            <p>to enhance your fitness journey and</p>
@@ -95,14 +96,14 @@
       </div>
 
 
-      <div class="inner-cards card-3">
+      <div class="inner-cards card-3" data-name="Join our diverse range of group fitness classes led by certified instructors for all fitness levels.">
         <div class="card-text">
            <p>Join our diverse range of group fitness classes led by certified instructors for all fitness levels.</p>
           <a href="./class.html"> <p class="card-info">See more ></p></a>
         </div>
       </div>
 
-      <div class="inner-cards card-4">
+      <div class="inner-cards card-4" data-name="Meet Our Expert Trainers">
         <div class="card-text">
           <p>Meet Our Expert Trainers</p>
          <a href="./trainers.html"> <p class="card-info">See more ></p></a>
@@ -142,5 +143,36 @@
        </div>
      </section>
 
+      <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const searchInput = document.getElementById("inputPlace");
+        const gymCards = document.querySelectorAll(".inner-cards");
+        const noResults = document.getElementById("noResults");
+
+        searchInput.addEventListener("input", function () {
+          const query = searchInput.value.trim().toLowerCase();
+
+          let visibleCount = 0;
+
+          gymCards.forEach((card) => {
+            const searchableText = card.getAttribute("data-name").toLowerCase();
+
+            if (searchableText.includes(query)) {
+              card.classList.remove("hidden");
+              visibleCount++;
+            } else {
+              card.classList.add("hidden");
+            }
+          });
+
+          // Show/hide no results message
+          if (visibleCount === 0 && query !== "") {
+            noResults.style.display = "block";
+          } else {
+            noResults.style.display = "none";
+          }
+        });
+      });
+    </script>
   </body>
 </html>

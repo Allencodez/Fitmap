@@ -207,6 +207,25 @@ a {
   background-blend-mode: darken;
 }
 
+.inner-cards.hidden {
+  display: none;
+  opacity: 0;
+  transform: translateY(-10px);
+  height: 0;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+#noResults {
+  text-align: center;
+  color: rgb(139, 37, 37);
+  font-size: 20px;
+  font-family: poppins;
+  display: none;
+  margin-bottom: 90px;
+}
+
 .card-1 {
   background-image: url("Assets/images/d5c66f5a07b774d755b9b192d3895f5767213824.jpg");
 }

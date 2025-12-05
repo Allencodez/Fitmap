@@ -43,7 +43,7 @@ body {
 .logo-name {
   font-size: 30px;
   font-family: poppins;
-  margin-left: 30px;
+  margin-left: 10px;
 }
 
 #page-1 {
@@ -531,7 +531,6 @@ input::placeholder {
 }
 .login-checks {
   margin-left: 55%;
-  margin-bottom: 30px;
   font-size: 18px;
 }
 
@@ -565,7 +564,6 @@ input::placeholder {
   right: 50px;
   bottom: 10px;
   cursor: pointer;
-  /* transform: translateY(-50%); */
 }
 
 /* Forgotten Password Page */
@@ -623,11 +621,51 @@ input::placeholder {
   height: 220vh;
 }
 
+.jared-1 {
+  margin-top: 15px;
+  height: 15vh;
+  width: 89.3vw;
+  background-image: url("Assets/images/hall4.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  margin-left: 20px;
+  background-color: rgba(0, 0, 0, 0.3);
+  background-blend-mode: darken;
+  position: relative;
+}
+
+.jared-2 {
+  margin-top: 15px;
+  height: 15vh;
+  width: 89.3vw;
+  background-image: url("Assets/images/hall-3.jpg");
+  clip-path: inset(50% 10 10 10);
+  background-size: cover;
+  background-repeat: no-repeat;
+  margin-left: 20px;
+  background-color: rgba(0, 0, 0, 0.3);
+  background-blend-mode: darken;
+  position: relative;
+}
+
 .jared {
   margin-top: 15px;
   height: 15vh;
   width: 89.3vw;
-  background-image: url("Assets/Icons/hall1.jpg");
+  background-image: url("Assets/images/hall1.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  margin-left: 20px;
+  background-color: rgba(0, 0, 0, 0.3);
+  background-blend-mode: darken;
+  position: relative;
+}
+
+.jared-5 {
+  margin-top: 15px;
+  height: 15vh;
+  width: 89.3vw;
+  background-image: url("Assets/images/hall5.jpg");
   background-size: cover;
   background-repeat: no-repeat;
   margin-left: 20px;
@@ -901,11 +939,11 @@ input::placeholder {
 /* MAP-VIEW */
 
 .map-view {
-  /* text-align: center; */
   display: flex;
   justify-content: center;
   align-items: center;
 }
+
 /* 
 #P-head {
   margin-left: 20px;
@@ -916,7 +954,6 @@ input::placeholder {
 } */
 
 .PM-view {
-  /* margin-left: 20px; */
   width: 95vw;
   color: black;
   display: flex;
@@ -927,7 +964,7 @@ input::placeholder {
 
 #map {
   height: 300px;
-  width: 380px;
+  width: 450px;
   margin-left: 20px;
   display: flex;
   justify-content: center;
@@ -944,11 +981,12 @@ input::placeholder {
   display: flex;
   justify-content: center;
   flex-direction: column;
-  width: 98vw;
+  width: 90vw;
   height: 210px;
   background-color: white;
   border-radius: 15px;
   margin-top: 20px;
+  margin-left: 10px;
 }
 
 .de-text {
@@ -1244,15 +1282,15 @@ img {
   font-family: poppins;
 }
 
-.shift-2 {
-  /* margin-bottom: 30%; */
+.C-shift {
+  margin-bottom: 90px;
 }
 
 /* CLASS PAGE */
 
 .C-container {
   background-color: #2a2a2a;
-  height: 125%;
+  /* height: 125%; */
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -1472,7 +1510,12 @@ input .B-box {
   background-color: grey;
 }
 
-input[type="checkbox"] {
+.B-set input[type="checkbox"] {
+  appearance: none;
+  cursor: pointer;
+}
+
+.B-set-1 input[type="checkbox"] {
   appearance: none;
   cursor: pointer;
 }
