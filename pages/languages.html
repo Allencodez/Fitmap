@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="../style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div>
+      <div>
+        <div class="B-text" data-i18n="choose_language">
+          Choose your language
+        </div>
+      </div>
+
+      <div class="lang-card">
+        <div class="lang-class">
+          <img
+            class="flags"
+            src="../Assets/images/flag-eng.png"
+            alt="english flag"
+          />
+          <button class="lang-btn active" data-lang="en" data-i18n="english">
+            English
+          </button>
+        </div>
+
+        <div class="lang-class">
+          <img
+            class="flags"
+            src="../Assets/images/flag-france.png"
+            alt="french flag"
+          />
+          <button class="lang-btn" data-lang="fr" data-i18n="french">
+            French
+          </button>
+        </div>
+
+        <div class="lang-class">
+          <img
+            class="flags"
+            src="../Assets/images/flag-span.png"
+            alt="spanish flag"
+          />
+          <button class="lang-btn" data-lang="es" data-i18n="spanish">
+            Spanish
+          </button>
+        </div>
+
+        <div class="lang-class">
+          <img
+            class="flags"
+            src="../Assets/images/flag-japan.png"
+            alt="japanese flag"
+          />
+          <button class="lang-btn" data-lang="jp" data-i18n="japanese">
+            Japanese
+          </button>
+        </div>
+
+        <div class="lang-class">
+          <img
+            class="flags"
+            src="../Assets/images/flag-nig.png"
+            alt="nigerian flag"
+          />
+          <button class="lang-btn" data-lang="pg" data-i18n="pidgin">
+            Pidgin
+          </button>
+        </div>
+
+        <div class="lang-class">
+          <img
+            class="flags"
+            src="../Assets/images/flag-arab.png"
+            alt="arabic flag"
+          />
+          <button class="lang-btn" data-lang="ar" data-i18n="arabic">
+            Arabic
+          </button>
+        </div>
+
+        <div class="lang-class">
+          <img
+            class="flags"
+            src="../Assets/images/flag-port.png"
+            alt="flag portugese"
+          />
+          <button class="lang-btn" data-lang="pt" data-i18n="portugese">
+            Portugese
+          </button>
+        </div>
+
+        <a href="./profile.html">
+          <div class="lang-class">
+            <button class="lang-btn-1" data-i18n="save_changes">
+              Save Changes
+            </button>
+          </div>
+        </a>
+        >
+      </div>
+    </div>
+    <script src="../js/i18n.js"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const buttons = document.querySelectorAll(".lang-btn");
+        function markActive(btn) {
+          buttons.forEach((b) => b.classList.remove("active"));
+          btn.classList.add("active");
+        }
+        buttons.forEach(function (b) {
+          b.addEventListener("click", function () {
+            const lang = b.getAttribute("data-lang");
+            if (!lang) return;
+            window.FitmapI18n.setLang(lang);
+            markActive(b);
+          });
+        });
+
+        // mark current selection from storage
+        const cur = window.FitmapI18n.getLang();
+        const curBtn = document.querySelector(
+          '.lang-btn[data-lang="' + cur + '"]'
+        );
+        if (curBtn) markActive(curBtn);
+      });
+    </script>
+  </body>
+</html>

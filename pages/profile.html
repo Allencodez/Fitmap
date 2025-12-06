@@ -10,7 +10,8 @@
       href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="../style.css" />
+  <link rel="stylesheet" href="../style.css" />
+  
   </head>
   <body>
     <div class="Pf-container">
@@ -19,7 +20,7 @@
           <img
             id="Pf-img"
             src="../Assets/images/0ba6ead5b02629822286d3beae0c9a596103ba17.png"
-            alt=""
+            alt="profile"
           />
         </div>
 
@@ -28,29 +29,30 @@
         </div>
       </div>
 
-     <a href="../edit-profile.html"> <div class="Pe-row">
+  <a href="../edit-profile.html"> <div class="Pe-row">
        <img src="../Assets/images/Vector (7).png" alt="">
-          <span>Edit Profile</span>
+    <span data-i18n="edit_profile">Edit Profile</span>
           <img src="../Assets/images/CaretRight.png" alt="">
         </div></a>
         
-         <a href="./payment-method.html"><div class="Pp-row">
+        <a href="./payment-method.html"><div class="Pp-row">
        <img src="../Assets/images/Vector (11).png" alt="">
-          <span id="span-1">Payment method</span>
+          <span id="span-1" data-i18n="payment_method">Payment method</span>
           <img src="../Assets/images/CaretRight.png" alt="">
         </div></a>
 
+         <a href="./languages.html">
        <div class="Pl-row">
        <img src="../Assets/images/material-symbols_language.png" alt="">
           <span>Language</span>
           <img src="../Assets/images/CaretRight.png" alt="">
-        </div>
+        </div></a>
 
-         <div class="Po-row">
-       <img src="../Assets/images/material-symbols_history.png" alt="">
-          <span>Order History</span>
-          <img id="lang-btn" src="../Assets/images/CaretRight.png" alt="">
-        </div>
+         <div class="Pl-row">
+         <img src="../Assets/images/material-symbols_language.png" alt="">
+            <span data-i18n="language">Order History</span>
+            <img src="../Assets/images/CaretRight.png" alt="">
+          </div>
 
          <div class="Po-row">
        <img src="../Assets/images/mdi_invite.png" alt="">
@@ -100,4 +102,26 @@
      </section>
 
   </body>
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      try {
+        const raw = localStorage.getItem('fitmap_user');
+        if (!raw) return;
+        const user = JSON.parse(raw);
+        if (user && user.name) {
+          const el = document.querySelector('.Pf-text');
+          if (el) el.textContent = user.name;
+        }
+        // show saved profile image if present
+        try {
+          if (user && user.profileImage) {
+            const img = document.getElementById('Pf-img');
+            if (img) img.src = user.profileImage;
+          }
+        } catch (e) {}
+      } catch (e) {
+        // ignore
+      }
+    });
+  </script>
 </html>

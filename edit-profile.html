@@ -19,8 +19,36 @@
           <img
             id="Ep-img"
             src="./Assets/images/0ba6ead5b02629822286d3beae0c9a596103ba17.png"
-            alt=""
+            alt="profile"
           />
+          <img
+            id="Ep-img-1"
+            src="./Assets/images/icons8-camera-24.png"
+            alt="camera"
+            style="cursor: pointer"
+          />
+          <!-- hidden file input for selecting profile image -->
+          <input
+            id="ep-file"
+            type="file"
+            accept="image/*"
+            style="display: none"
+          />
+          <!-- small toast for image edit status -->
+          <div
+            id="ep-toast"
+            style="
+              display: none;
+              font-size: 12px;
+              margin-top: 6px;
+              padding: 6px 8px;
+              border-radius: 6px;
+              background: #2d8a2d;
+              color: #fff;
+              opacity: 0;
+              transition: opacity 0.25s;
+            "
+          ></div>
         </div>
 
         <div>
@@ -29,8 +57,9 @@
           </div>
           <div>
             <input
+              id="ep-email"
               class="login-text"
-              type="text"
+              type="email"
               placeholder="solotech@gmail.com"
             />
           </div>
@@ -38,62 +67,208 @@
 
         <div>
           <div class="login-wrap Ep-tag">
-            <label class="login-name">Phone Number</label>
+            <label class="login-name">Name</label>
           </div>
           <div>
             <input
+              id="ep-name"
               class="login-text"
               type="text"
-              placeholder="+234 9033432558"
+              placeholder="user-name"
             />
           </div>
         </div>
 
         <div>
           <div class="login-wrap Ep-tag">
+            <label class="login-name">Password</label>
+          </div>
+          <div>
+            <input
+              id="ep-pass"
+              class="login-text"
+              type="password"
+              placeholder="********"
+            />
+          </div>
+        </div>
+
+        <!-- <div>
+          <div class="login-wrap Ep-tag">
             <label class="login-name">Gender</label>
           </div>
           <div class="Ep-gap">
             <input class="login-text" type="text" placeholder="Male" />
           </div>
-        </div>
+        </div> -->
 
-        <a href="./pages/profile.html">
-          <div><button id="Ep-btn">Save Changes</button></div></a
-        >
+        <div><button id="Ep-btn">Save Changes</button></div>
       </div>
     </div>
 
-    <div class="Ep-shift"></div>
+    <!-- <div class="Ep-shift"></div> -->
 
     <section>
       <div class="foot">
-
         <div class="tags">
-             <a href="./pages/homepage.html"> <img class="tags-home" src="./Assets/Icons/material-symbols_home-outline.png" alt="#"></a>
-             <a href="./pages/homepage.html"><p class="tag-names">Home</p></a>
+          <a href="./pages/homepage.html">
+            <img
+              class="tags-home"
+              src="./Assets/Icons/material-symbols_home-outline.png"
+              alt="#"
+          /></a>
+          <a href="./pages/homepage.html"><p class="tag-names">Home</p></a>
         </div>
 
         <div class="tags">
-         <a href="./pages/payment.html"><img class="tags-payment" src="./Assets/Icons/fluent_payment-24-regular.png" alt="#"></a>
-           <a href="./pages/payment.html"></a> <p class="tag-names">Payment</p></a>
+          <a href="./pages/payment.html"
+            ><img
+              class="tags-payment"
+              src="./Assets/Icons/fluent_payment-24-regular.png"
+              alt="#"
+          /></a>
+          <a href="./pages/payment.html"><p class="tag-names">Payment</p></a>
         </div>
 
         <div class="tags">
-         <a href="./pages/class.html"> <img class="tags-classes" src="./Assets/Icons/uil_calender.png" alt=""></a>
-         <a href="./pages/class.html"> <p class="tag-names">Classes</p></a>
+          <a href="./pages/class.html">
+            <img
+              class="tags-classes"
+              src="./Assets/Icons/uil_calender.png"
+              alt=""
+          /></a>
+          <a href="./pages/class.html"> <p class="tag-names">Classes</p></a>
         </div>
 
         <div class="tags">
-        <a href="./pages/profile.html"> <img class="tags-profile" src="./Assets/Icons/gg_profile.png" alt=""></a>
+          <a href="./pages/profile.html">
+            <img
+              class="tags-profile"
+              src="./Assets/Icons/gg_profile.png"
+              alt=""
+          /></a>
           <a href="./pages/profile.html"><p class="tag-names">Profile</p></a>
         </div>
 
         <div class="tags">
-          <a href="./pages/more.html"> <img class="tags-more" src="./Assets/Icons/Vector (3).png" alt=""></a>
+          <a href="./pages/more.html">
+            <img class="tags-more" src="./Assets/Icons/Vector (3).png" alt=""
+          /></a>
           <a href="./pages/more.html"> <p class="tag-name-more">More</p></a>
         </div>
-       </div>
-     </section>
+      </div>
+    </section>
   </body>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const email = document.getElementById("ep-email");
+      const nameEl = document.getElementById("ep-name");
+      const pass = document.getElementById("ep-pass");
+      const btn = document.getElementById("Ep-btn");
+
+      // preview & load existing values
+      const fileInput = document.getElementById("ep-file");
+      const camBtn = document.getElementById("Ep-img-1");
+      const profileImg = document.getElementById("Ep-img");
+
+      try {
+        const raw = localStorage.getItem("fitmap_user");
+        if (raw) {
+          const user = JSON.parse(raw);
+          if (user.email) email.value = user.email;
+          if (user.name) {
+            const profileNameEl = document.querySelector(".Pf-text");
+            if (profileNameEl) profileNameEl.textContent = user.name;
+            nameEl.value = user.name;
+          }
+          if (user.password) pass.value = user.password;
+          if (user.profileImage) {
+            // show saved image
+            profileImg.src = user.profileImage;
+          }
+        }
+      } catch (e) {}
+
+      // open file picker when camera icon clicked
+      camBtn &&
+        camBtn.addEventListener("click", function () {
+          fileInput && fileInput.click();
+        });
+
+      // handle file selection and preview (simple flow: resize/crop and save as PNG)
+      fileInput &&
+        fileInput.addEventListener("change", function (evt) {
+          const f = evt.target.files && evt.target.files[0];
+          const toast = document.getElementById("ep-toast");
+          if (!f) return;
+
+          const defaultImg = document.getElementById("Ep-img");
+          const targetW = defaultImg.naturalWidth || 120;
+          const targetH = defaultImg.naturalHeight || 120;
+
+          const img = new Image();
+          const reader = new FileReader();
+          reader.onload = function (e) {
+            img.onload = function () {
+              const scale = Math.min(
+                targetW / img.width,
+                targetH / img.height,
+                1
+              );
+              const w = Math.round(img.width * scale);
+              const h = Math.round(img.height * scale);
+              // export a fixed 120x120 image for storage and preview
+              const size = 120;
+              const canvas = document.createElement("canvas");
+              canvas.width = size;
+              canvas.height = size;
+              const ctx = canvas.getContext("2d");
+              ctx.clearRect(0, 0, size, size);
+              const dx = Math.round((size - w) / 2);
+              const dy = Math.round((size - h) / 2);
+              ctx.drawImage(img, 0, 0, img.width, img.height, dx, dy, w, h);
+
+              const dataUrl = canvas.toDataURL("image/png");
+              profileImg.src = dataUrl;
+              profileImg.style.borderRadius = "50%";
+              profileImg.style.width = "120px";
+              profileImg.style.height = "120px";
+
+              try {
+                const raw = localStorage.getItem("fitmap_user");
+                const user = raw ? JSON.parse(raw) : {};
+                user.profileImage = dataUrl;
+                localStorage.setItem("fitmap_user", JSON.stringify(user));
+              } catch (err) {}
+
+              if (toast) {
+                toast.textContent = "Image edited";
+                toast.style.background = "#2d8a2d";
+                toast.style.opacity = "1";
+                setTimeout(function () {
+                  toast.style.opacity = "0";
+                }, 1500);
+              }
+            };
+            img.src = e.target.result;
+          };
+          reader.readAsDataURL(f);
+        });
+
+      btn.addEventListener("click", function () {
+        try {
+          const raw = localStorage.getItem("fitmap_user");
+          const user = raw ? JSON.parse(raw) : {};
+          // update fields
+          user.email = email.value.trim() || user.email || "";
+          user.name = nameEl.value.trim() || user.name || "";
+          user.password = pass.value || user.password || "";
+          // preserve existing profileImage if present (file picker already saved it)
+          localStorage.setItem("fitmap_user", JSON.stringify(user));
+        } catch (e) {}
+        window.location.href = "./pages/profile.html";
+      });
+    });
+  </script>
+  <script src="./js/i18n.js"></script>
 </html>

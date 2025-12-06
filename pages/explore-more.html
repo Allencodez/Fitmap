@@ -10,7 +10,8 @@
       href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="../style.css" />
+  <link rel="stylesheet" href="../style.css" />
+  
   </head>
   <body>
     <div class="Em-Container">
@@ -31,7 +32,7 @@
       </div>
 
       <div class="Em-yah">
-       <a href="./booking.html"> <p class="Em-button Em-space">Continue</p></a>
+        <button id="continueBtn" class="Em-button Em-space" disabled>Continue</button>
       </div>
 
       <section>
@@ -66,13 +67,38 @@
 
     </div>
     <script>
-      const boxes = document.querySelectorAll(".Em-weeks, .Em-week-1, .Em-days-1, .Em-days");
+      const dayBoxes = Array.from(document.querySelectorAll('.Em-days-1, .Em-days'));
+      const timeBoxes = Array.from(document.querySelectorAll('.Em-week-1, .Em-weeks'));
+      const continueBtn = document.getElementById('continueBtn');
 
-      boxes.forEach(box => {
-        box.addEventListener("click", () =>{
-          box.style.backgroundColor = 
-           box.style.backgroundColor === "grey" ? "white": "grey";
-        });
+      function clearGroup(group) {
+        group.forEach(el => el.classList.remove('selected'));
+      }
+
+      function toggleSelection(el, group) {
+        // allow only one selection per group
+        clearGroup(group);
+        el.classList.add('selected');
+      }
+
+      function updateContinueState() {
+        const daySelected = dayBoxes.some(b => b.classList.contains('selected'));
+        const timeSelected = timeBoxes.some(b => b.classList.contains('selected'));
+        continueBtn.disabled = !(daySelected && timeSelected);
+      }
+
+      dayBoxes.forEach(b => b.addEventListener('click', () => { toggleSelection(b, dayBoxes); updateContinueState(); }));
+      timeBoxes.forEach(b => b.addEventListener('click', () => { toggleSelection(b, timeBoxes); updateContinueState(); }));
+
+      continueBtn.addEventListener('click', () => {
+        if (continueBtn.disabled) return;
+        // optional: pass selected day/time via query params
+        const day = dayBoxes.find(b => b.classList.contains('selected'))?.textContent.trim();
+        const time = timeBoxes.find(b => b.classList.contains('selected'))?.textContent.trim();
+        const params = new URLSearchParams();
+        if (day) params.set('day', day);
+        if (time) params.set('time', time);
+        window.location.href = './booking.html' + (params.toString() ? '?' + params.toString() : '');
       });
     </script>
   </body>

@@ -10,7 +10,8 @@
       href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="../styles.css" />
+  <link rel="stylesheet" href="../styles.css" />
+  
   </head>
   <body>
    
@@ -22,10 +23,10 @@
         
 
         <div class="wrapper">
-           <div class="header-txt">
-              <p>Hi, Solomon</p>
-              <p>Let's start training</p>
-           </div>
+        <div class="header-txt">
+          <p>Hi, Solomon</p>
+          <p data-i18n="start_training">Let's start training</p>
+        </div>
 
             <div class="content">
                <a href="./profile.html"> <div class="image-pfp">
@@ -44,35 +45,35 @@
         <div class="input-field">
           <label for="text"></label>
           <img id="search" src="../Assets/Icons/search.png" alt="">
-          <input id="inputPlace" style="font-size: 17px;" type="text" placeholder="Search" />
+          <input id="inputPlace" style="font-size: 17px;" type="text" data-i18n="search_placeholder" placeholder="Search" />
         </div>
 
        <div class="card">
           <div>
              <div class="card-text-1">
-               <p>Experience World-Class</p>
-               <p>Fitness With Us.</p>
+          <p data-i18n="exp_line1">Experience World-Class</p>
+          <p data-i18n="exp_line2">Fitness With Us.</p>
              </div>
-            <a href="./class.html"> <div class="card-text-2">Start Your Journey</div></a>
+        <a href="./class.html"> <div class="card-text-2" data-i18n="start_journey">Start Your Journey</div></a>
           </div>
        </div>
 
        <div class="tabs">
          <div class="hash">
            <div class="wraps">
-           <a href="./homepage.html"> <div class="tab-active">All</div></a>
+           <a href="./homepage.html"> <div class="tab-active" data-i18n="tab_all">All</div></a>
            </div>
 
            <div class="hash">
-             <a href="./payment.html"><div class="tab-1">Gym Centers</div></a>
-            <a href="./Amenities.html"> <div class="tab">Amenities</div></a>
-            <a href="./trainers.html"> <div class="tab">Trainers</div></a>
-            <a href="../pages/equipments.html"> <div class="tab">Equipment</div></a>
+             <a href="./payment.html"><div class="tab-1" data-i18n="tab_gym_centers">Gym Centers</div></a>
+            <a href="./Amenities.html"> <div class="tab" data-i18n="tab_amenities">Amenities</div></a>
+            <a href="./trainers.html"> <div class="tab" data-i18n="tab_trainers">Trainers</div></a>
+            <a href="../pages/equipments.html"> <div class="tab" data-i18n="tab_equipment">Equipment</div></a>
            </div>
          </div>
        </div>
 
-       <div id="noResults">No results found matching your search.</div>
+  <div id="noResults" data-i18n="no_results">No results found matching your search.</div>
 
        </section>
 
@@ -80,34 +81,34 @@
 
       <div class="inner-cards card-1" data-name="Find gym location nearest to you. Each center is equipped with state of the art facilities.">
         <div class="card-text">
-          <p>Find gym location nearest to you.</p>
-          <p>Each center is equipped with state of</p>
-          <p>the art facilities.</p>
-          <a href="./Amenities.html"><p class="card-info">See more ></p></a>
+          <p data-i18n="card1_p1">Find gym location nearest to you.</p>
+          <p data-i18n="card1_p2">Each center is equipped with state of</p>
+          <p data-i18n="card1_p3">the art facilities.</p>
+          <a href="./Amenities.html"><p class="card-info" data-i18n="see_more">See more ></p></a>
         </div>
       </div>
 
       <div class="inner-cards card-2" data-name="Enjoy world-class facilites designed to enhance your fitness journey and provide ultimate comfort.">
         <div class="card-text">
-           <p>Enjoy world-class facilites designed</p>
-           <p>to enhance your fitness journey and</p>
-           <p>provide ultimate comfort.</p>
-          <a href="../pages/payment.html"> <p class="card-info">See more ></p></a>
+           <p data-i18n="card2_p1">Enjoy world-class facilites designed</p>
+           <p data-i18n="card2_p2">to enhance your fitness journey and</p>
+           <p data-i18n="card2_p3">provide ultimate comfort.</p>
+          <a href="../pages/payment.html"> <p class="card-info" data-i18n="see_more">See more ></p></a>
         </div>
       </div>
 
 
       <div class="inner-cards card-3" data-name="Join our diverse range of group fitness classes led by certified instructors for all fitness levels.">
         <div class="card-text">
-           <p>Join our diverse range of group fitness classes led by certified instructors for all fitness levels.</p>
-          <a href="./class.html"> <p class="card-info">See more ></p></a>
+           <p data-i18n="card3_p1">Join our diverse range of group fitness classes led by certified instructors for all fitness levels.</p>
+          <a href="./class.html"> <p class="card-info" data-i18n="see_more">See more ></p></a>
         </div>
       </div>
 
       <div class="inner-cards card-4" data-name="Meet Our Expert Trainers">
         <div class="card-text">
-          <p>Meet Our Expert Trainers</p>
-         <a href="./trainers.html"> <p class="card-info">See more ></p></a>
+          <p data-i18n="card4_p1">Meet Our Expert Trainers</p>
+         <a href="./trainers.html"> <p class="card-info" data-i18n="see_more">See more ></p></a>
         </div>
       </div>
      </section>
@@ -189,6 +190,7 @@
             tag.classList.add('active');
           });
         });
+
       });
     </script>
   </body>
