@@ -36,7 +36,7 @@
       </div>
 
       <div id="pm-class-1">
-        <input id="pm-text-1" type="text" placeholder="Jack William">
+        <input id="pm-text-1" class="card-name" type="text" placeholder="Jack William">
       </div>
 
       <div>
@@ -44,7 +44,7 @@
       </div>
 
       <div id="pm-class-1">
-        <input id="pm-text-1" placeholder="*** *** ***"></input>
+  <input id="pm-card-number" class="card-number pm-input" inputmode="numeric" pattern="\d*" placeholder="1234 5678 9012" />
       </div>
 
       <div id="pm-class-2">
@@ -53,18 +53,18 @@
             <p class="pm-text">Expiration date</p>
           </div>
 
-          <div cla="pm-class-3">
-            <input id="pm-text-5" placeholder="MM/YY"></input>
+          <div class="pm-class-3">
+            <input id="pm-exp" class="exp-date pm-input-small" placeholder="MM/YY" />
           </div>
         </div>
 
         <div>
           <div>
-            <p class="pm-text">Security Code</p>
+            <p class="pm-text-0">Security Code</p>
           </div>
 
           <div id="pm-class-3">
-            <input id="pm-text-5" placeholder="CVC"></input>
+            <input id="pm-cvc" class="cvc pm-input-small" inputmode="numeric" pattern="\d*" placeholder="CVC" />
           </div>
         </div>
       </div>
@@ -91,9 +91,9 @@
         <p id="pm-text-2">N20,500</p>
       </div>
 
-     <a href="./complete-payment.html"> <div>
-        <button id="pm-btn">Complete Payment</button>
-      </div></a>
+      <div>
+        <button id="pm-btn" disabled>Complete Payment</button>
+      </div>
     </div>
 
     <div id="pm-shift"></div>
@@ -129,4 +129,52 @@
      </section>
 
   </body>
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const cardNumber = document.getElementById('pm-card-number');
+      const cvc = document.getElementById('pm-cvc');
+      const nameOnCard = document.querySelector('.card-name');
+      const exp = document.getElementById('pm-exp');
+      const btn = document.getElementById('pm-btn');
+
+      function digitsOnly(value) {
+        return (value || '').replace(/\D/g, '');
+      }
+
+      function validate() {
+        const cardDigits = digitsOnly(cardNumber.value);
+        const cvcDigits = digitsOnly(cvc.value);
+        const nameVal = (nameOnCard && nameOnCard.value || '').trim();
+        const expVal = (exp && exp.value || '').trim();
+
+        const okCard = cardDigits.length >= 10;
+        const okCvc = cvcDigits.length >= 6;
+        const okName = nameVal.length > 0;
+        const okExp = expVal.length > 0;
+
+        btn.disabled = !(okCard && okCvc && okName && okExp);
+      }
+
+      [cardNumber, cvc, nameOnCard, exp].forEach(el => {
+        if (!el) return;
+        el.addEventListener('input', () => {
+          // keep only digits where appropriate
+          if (el === cardNumber || el === cvc) {
+            const pos = el.selectionStart;
+            el.value = digitsOnly(el.value);
+            try { el.setSelectionRange(pos, pos); } catch (e) {}
+          }
+          validate();
+        });
+      });
+
+      btn.addEventListener('click', function () {
+        if (btn.disabled) return;
+        // proceed to complete payment page
+        window.location.href = './complete-payment.html';
+      });
+
+      validate();
+    });
+  </script>
 </html>

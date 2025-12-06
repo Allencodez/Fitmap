@@ -1956,6 +1956,12 @@ span {
   margin-bottom: 10px;
 }
 
+.pm-text-0 {
+  font-size: 20px;
+  font-family: poppins;
+  margin-bottom: 10px;
+}
+
 #pm-text-1 {
   font-family: poppins;
   margin-left: 20px;
@@ -1980,6 +1986,30 @@ span {
 }
 
 #pm-class-1 {
+
+/* utility classes to restore default payment input styling */
+.pm-input {
+  font-family: poppins;
+  margin-left: 20px;
+  padding-top: 8px;
+  color: #2a2a2a;
+  background-color: lightgray;
+  font-size: 18px;
+  width: 350px;
+  border: none;
+}
+
+.pm-input-small {
+  font-family: poppins;
+  margin-left: 20px;
+  padding-top: 12px;
+  color: #2a2a2a;
+  /* background-color: lightgray; */
+  font-size: 18px;
+  /* width: 165px; */
+  border: none;
+  margin-bottom: 10px;
+}
   height: 40px;
   margin-bottom: 20px;
 }
@@ -1992,8 +2022,25 @@ span {
   background-color: lightgray;
   margin-left: 20px;
   width: 50%;
-  height: 40px;
+  height: 30px;
   margin-bottom: 20px;
+  /* gap: 20px; */
+}
+
+#pm-cvc{
+  background-color: lightgray;
+  border: none;
+  /* margin-top: 20px; */
+    width: 140px;
+    height: 30px;
+}
+
+#pm-exp{
+  background-color: lightgray;
+  border: none;
+  width: 140px; 
+  height: 30px;
+  margin-right: 65px;
 }
 
 #pm-text-2 {
