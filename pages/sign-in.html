@@ -29,6 +29,7 @@
           </div>
           <div>
             <input
+              id="si-email"
               class="login-p-text"
               type="email"
               data-i18n="your_email"
@@ -44,6 +45,7 @@
 
           <div>
             <input
+              id="si-pass"
               class="login-p-text"
               type="password"
               data-i18n="password"
@@ -107,18 +109,23 @@
   </body>
   <script>
     document.addEventListener("DOMContentLoaded", function () {
-      const inputs = Array.from(document.querySelectorAll(".login-page input"));
+      const emailInput = document.getElementById("si-email");
+      const passInput = document.getElementById("si-pass");
       const btn = document.getElementById("signinBtn");
       const signinMsg = document.getElementById("signinMsg");
 
+      function showMsg(text, color = "red") {
+        if (!signinMsg) return;
+        signinMsg.style.display = "block";
+        signinMsg.style.color = color;
+        signinMsg.textContent = text;
+      }
+
       function validate() {
-        const emailInput = inputs.find((i) => i.type === "email");
-        const passInput = inputs.find((i) => i.type === "password");
         const emailVal = emailInput ? emailInput.value.trim() : "";
         const passVal = passInput ? passInput.value.trim() : "";
         const emailFormatOk = /^\S+@\S+\.\S+$/.test(emailVal);
 
-        // Load stored user
         let stored = null;
         try {
           const raw = localStorage.getItem("fitmap_user");
@@ -129,91 +136,76 @@
 
         if (!stored) {
           btn.disabled = true;
-          if (signinMsg) {
-            signinMsg.style.display = "block";
-            signinMsg.style.color = "red";
-            signinMsg.textContent = "No account found. Please sign up first.";
-          }
+          showMsg("No account found. Please sign up first.");
           return;
         }
 
         if (!emailFormatOk) {
           btn.disabled = true;
-          if (signinMsg) {
-            signinMsg.style.display = "block";
-            signinMsg.style.color = "red";
-            signinMsg.textContent = "Enter a valid email address.";
-          }
+          showMsg("Enter a valid email address.");
           return;
         }
 
         if (emailVal.toLowerCase() !== (stored.email || "").toLowerCase()) {
           btn.disabled = true;
-          if (signinMsg) {
-            signinMsg.style.display = "block";
-            signinMsg.style.color = "red";
-            signinMsg.textContent = "We can't find an account with that email.";
-          }
+          showMsg("We can't find an account with that email.");
           return;
         }
 
         if (!passVal || passVal.length < 6) {
           btn.disabled = true;
-          if (signinMsg) {
-            signinMsg.style.display = "block";
-            signinMsg.style.color = "red";
-            signinMsg.textContent = "Password must be at least 6 characters.";
-          }
+          showMsg("Password must be at least 6 characters.");
           return;
         }
 
-        // all checks passed
         btn.disabled = false;
         if (signinMsg) signinMsg.style.display = "none";
       }
 
-      inputs.forEach((i) => i.addEventListener("input", validate));
+      [emailInput, passInput].forEach(
+        (el) => el && el.addEventListener("input", validate)
+      );
+
+      // allow Enter key
+      [emailInput, passInput].forEach(
+        (el) =>
+          el &&
+          el.addEventListener("keydown", function (e) {
+            if (e.key === "Enter") {
+              e.preventDefault();
+              if (!btn.disabled) btn.click();
+            }
+          })
+      );
 
       btn.addEventListener("click", function () {
         if (btn.disabled) return;
         try {
           const raw = localStorage.getItem("fitmap_user");
           if (!raw) {
-            signinMsg.style.display = "block";
-            signinMsg.style.color = "red";
-            signinMsg.textContent = "No account found. Please sign up first.";
+            showMsg("No account found. Please sign up first.");
             return;
           }
           const user = JSON.parse(raw);
-          const emailInput = inputs.find((i) => i.type === "email");
-          const passInput = inputs.find((i) => i.type === "password");
           const email = emailInput ? emailInput.value.trim() : "";
           const pass = passInput ? passInput.value.trim() : "";
 
           if (!user.email || user.email.toLowerCase() !== email.toLowerCase()) {
-            signinMsg.style.display = "block";
-            signinMsg.style.color = "red";
-            signinMsg.textContent = "We can't find an account with that email.";
+            showMsg("We can't find an account with that email.");
             return;
           }
 
           if (user.password !== pass) {
-            signinMsg.style.display = "block";
-            signinMsg.style.color = "red";
-            signinMsg.textContent = "Email or password is incorrect.";
+            showMsg("Email or password is incorrect.");
             return;
           }
 
           // success
           window.location.href = "homepage.html";
         } catch (e) {
-          signinMsg.style.display = "block";
-          signinMsg.style.color = "red";
-          signinMsg.textContent = "An error occurred. Try again.";
+          showMsg("An error occurred. Try again.");
         }
       });
-
-      // Google button intentionally has no action (presentational only)
 
       validate();
     });

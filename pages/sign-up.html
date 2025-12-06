@@ -25,6 +25,7 @@
           </div>
           <div>
             <input
+              id="su-name"
               required
               class="login-p-text"
               type="text"
@@ -55,6 +56,7 @@
 
           <div>
             <input
+              id="su-pass"
               class="login-p-text"
               type="password"
               placeholder="********"
@@ -113,29 +115,27 @@
   </body>
   <script>
     document.addEventListener("DOMContentLoaded", function () {
-      const inputs = Array.from(document.querySelectorAll("input[required]"));
+      const nameInput = document.getElementById("su-name");
+      const emailInput = document.getElementById("su-email");
+      const passInput = document.getElementById("su-pass");
       const signupBtn = document.getElementById("signupBtn");
       const signupMsg = document.getElementById("signupMsg");
 
       function validate() {
         let valid = true;
-        inputs.forEach((i) => {
-          if (!i.value.trim()) valid = false;
-          if (i.type === "email" && i.value) {
-            // simple email check
-            const re = /^\S+@\S+\.\S+$/;
-            if (!re.test(i.value.trim())) valid = false;
-          }
-          if (i.type === "password" && i.value) {
-            if (i.value.trim().length < 6) valid = false;
-          }
-        });
+        if (!nameInput || !nameInput.value.trim()) valid = false;
+        if (!emailInput || !/^\S+@\S+\.\S+$/.test(emailInput.value.trim()))
+          valid = false;
+        if (!passInput || passInput.value.trim().length < 6) valid = false;
+
         signupBtn.disabled = !valid;
         if (signupMsg) {
           if (!valid) {
-            // show specific password length message if that's the issue
-            const pass = document.querySelector("input[type=password]");
-            if (pass && pass.value && pass.value.trim().length < 6) {
+            if (
+              passInput &&
+              passInput.value &&
+              passInput.value.trim().length < 6
+            ) {
               signupMsg.style.display = "block";
               signupMsg.style.color = "red";
               signupMsg.textContent = "Password must be at least 6 characters.";
@@ -151,19 +151,15 @@
         }
       }
 
-      inputs.forEach((i) => i.addEventListener("input", validate));
+      [nameInput, emailInput, passInput].forEach(
+        (i) => i && i.addEventListener("input", validate)
+      );
 
-      // Prevent accidental navigation; when valid, navigate to sign-in (simulate submit)
       signupBtn.addEventListener("click", function (e) {
         if (signupBtn.disabled) {
           e.preventDefault();
           return;
         }
-        // gather values: expected order in markup is name, email, password
-        const reqs = Array.from(document.querySelectorAll("input[required]"));
-        const nameInput = reqs.find((i) => i.type === "text");
-        const emailInput = reqs.find((i) => i.type === "email");
-        const passInput = reqs.find((i) => i.type === "password");
         const user = {
           name: nameInput ? nameInput.value.trim() : "",
           email: emailInput ? emailInput.value.trim() : "",
@@ -171,10 +167,9 @@
         };
         try {
           localStorage.setItem("fitmap_user", JSON.stringify(user));
-        } catch (e) {
+        } catch (err) {
           // ignore storage errors
         }
-        // on success, go to sign-in
         window.location.href = "sign-in.html";
       });
 

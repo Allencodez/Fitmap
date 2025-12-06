@@ -22,6 +22,17 @@
         </div>
 
         <div>
+          <p class="name-text">Account Email</p>
+          <div>
+            <input
+              id="fp-email"
+              class="login-p-text"
+              type="email"
+              placeholder="you@example.com"
+              required
+            />
+          </div>
+
           <p class="name-text" data-i18n="password">Enter New Password</p>
           <div>
             <input
@@ -83,43 +94,72 @@
   </body>
   <script>
     document.addEventListener("DOMContentLoaded", function () {
+      const fpEmail = document.getElementById("fp-email");
       const newPass = document.getElementById("newPass");
       const rePass = document.getElementById("rePass");
       const btn = document.getElementById("confirmPassBtn");
       const forgotMsg = document.getElementById("forgotMsg");
 
+      function showMsg(text, color = "#666") {
+        if (!forgotMsg) return;
+        forgotMsg.style.display = "block";
+        forgotMsg.style.color = color;
+        forgotMsg.textContent = text;
+      }
+
       function validate() {
+        const emailVal = fpEmail ? fpEmail.value.trim() : "";
         const a = newPass.value.trim();
         const b = rePass.value.trim();
-        // Enforce minimum password length
+
+        if (!emailVal) {
+          btn.disabled = true;
+          showMsg("Please enter the account email.");
+          return;
+        }
+
+        const emailOk = /^\S+@\S+\.\S+$/.test(emailVal);
+        if (!emailOk) {
+          btn.disabled = true;
+          showMsg("Enter a valid email address.");
+          return;
+        }
+
+        // Enforce minimum password length and matching
         if (!a || !b) {
           btn.disabled = true;
-          if (forgotMsg) {
-            forgotMsg.style.display = "block";
-            forgotMsg.style.color = "#666";
-            forgotMsg.textContent =
-              "Please enter matching passwords to enable Confirm.";
-          }
+          showMsg("Please enter matching passwords to enable Confirm.");
           return;
         }
 
         if (a.length < 6) {
           btn.disabled = true;
-          if (forgotMsg) {
-            forgotMsg.style.display = "block";
-            forgotMsg.style.color = "red";
-            forgotMsg.textContent = "Password must be at least 6 characters.";
-          }
+          showMsg("Password must be at least 6 characters.", "red");
           return;
         }
 
         if (a !== b) {
           btn.disabled = true;
-          if (forgotMsg) {
-            forgotMsg.style.display = "block";
-            forgotMsg.style.color = "red";
-            forgotMsg.textContent = "Passwords do not match.";
-          }
+          showMsg("Passwords do not match.", "red");
+          return;
+        }
+
+        // Check stored user email
+        let stored = null;
+        try {
+          const raw = localStorage.getItem("fitmap_user");
+          stored = raw ? JSON.parse(raw) : null;
+        } catch (e) {
+          stored = null;
+        }
+
+        if (
+          !stored ||
+          !stored.email ||
+          stored.email.toLowerCase() !== emailVal.toLowerCase()
+        ) {
+          btn.disabled = true;
+          showMsg("No account found for this email.", "red");
           return;
         }
 
@@ -128,8 +168,9 @@
         if (forgotMsg) forgotMsg.style.display = "none";
       }
 
-      newPass.addEventListener("input", validate);
-      rePass.addEventListener("input", validate);
+      [fpEmail, newPass, rePass].forEach(
+        (el) => el && el.addEventListener("input", validate)
+      );
 
       btn.addEventListener("click", function () {
         if (btn.disabled) return;
