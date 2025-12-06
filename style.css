@@ -1680,6 +1680,14 @@ input[type="checkbox"]:checked {
   margin-bottom: 30px;
 }
 
+.Pf-text-1 {
+  font-family: poppins;
+  font-size: 20px;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+
 .Pe-row {
   display: flex;
   align-items: center;
@@ -2270,11 +2278,83 @@ hr {
   margin-bottom: 10px;
   border-radius: 10px;
   font-family: poppins;
-  font-size: 16px;
-  margin-left: 80%;
+  font-size: 18px;
+  margin-left: 75%;
   background-color: #a4eb3f;
+  padding: 5px 12px;
 }
 
 .r-shift{
   margin-bottom: 100px;
+}
+
+
+
+/* ORDER HISTORY */
+
+.order-card {
+  padding: 10px;
+  background-color: lightgray;
+  color: #121212;
+  border-radius: 15px;
+  margin-bottom: 15HinHpx;
+  margin-left: 20px;
+  width: 90%;
+  border: 2px solid black;
+}
+
+.order-1 {
+  display: flex;
+  justify-content: space-between;
+}
+
+.order-text{
+  color: black;
+  font-family: poppins;
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.order-text-0{
+  color: black;
+  font-family: poppins;
+  font-size: 18px;
+  margin-bottom: 10px;
+  margin-left: 10px;
+}
+
+.order-text-1{
+  color: black;
+  font-family: poppins;
+  font-size: 16px;
+}
+
+.order-btn{
+  background-color: #a4eb3f;
+  font-family: poppins;
+  font-size: 18px;
+  border-radius: 10px;
+  margin-top: 10px;
+  padding: 5px 12px;
+  cursor: pointer;
+}
+
+.order-btn-1{
+  background-color: #a4eb3f;
+  font-family: poppins;
+  font-size: 18px;
+  border-radius: 10px;
+  margin-top: 10px;
+  padding: 5px 20px;
+  cursor: pointer;
+}
+
+.order-btn-2{
+  background-color: gray;
+  font-family: poppins;
+  font-size: 18px;
+  border-radius: 10px;
+  margin-top: 10px;
+  padding: 5px 20px;
+  cursor: pointer;
 }

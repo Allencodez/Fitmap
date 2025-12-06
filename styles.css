@@ -348,3 +348,12 @@ body.search-active .card-slider {
   top: 0;
   margin-top: 3px;
 }
+
+/* ORDER HISTORY */
+
+.order-card {
+}
+
+.order-1 {
+  display: flex;
+}
