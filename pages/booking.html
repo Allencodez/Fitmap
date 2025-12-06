@@ -69,7 +69,8 @@
       </div>
 
       <div>
-       <a href="./booking-auth.html"> <button class="B-button">Book Now</button></a>
+        <p id="bookingHint" style="color:#666; font-size:0.95rem; font-family: poppins; margin-bottom:8px;">Select at least one category and fill all fields to enable booking.</p>
+        <button id="bookNow" class="B-button" disabled>Book Now</button>
       </div>
 
       <section>
@@ -104,5 +105,44 @@
 
 
     </div>
+    <script>
+      (function(){
+        const boxes = Array.from(document.querySelectorAll('.B-box'));
+        const requiredInputs = Array.from(document.querySelectorAll('.login-text[required], input[required]'));
+        const bookBtn = document.getElementById('bookNow');
+        const hint = document.getElementById('bookingHint');
+
+        function inputsFilled() {
+          return requiredInputs.every(i => i.value && i.value.trim().length > 0);
+        }
+
+        function anyBoxChecked() {
+          return boxes.some(b => b.checked);
+        }
+
+        function update() {
+          if (anyBoxChecked() && inputsFilled()) {
+            bookBtn.disabled = false;
+            hint.style.display = 'none';
+          } else {
+            bookBtn.disabled = true;
+            hint.style.display = 'block';
+          }
+        }
+
+        boxes.forEach(b => b.addEventListener('change', update));
+        requiredInputs.forEach(i => i.addEventListener('input', update));
+
+        // ensure clicking Book Now navigates only when enabled
+        bookBtn.addEventListener('click', function(){
+          if (bookBtn.disabled) return;
+          // user moves on to booking-auth page
+          window.location.href = './booking-auth.html';
+        });
+
+        // initial check
+        update();
+      })();
+    </script>
   </body>
 </html>

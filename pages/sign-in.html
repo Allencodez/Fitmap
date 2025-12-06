@@ -200,8 +200,12 @@
             return;
           }
 
-          // success
-          window.location.href = "homepage.html";
+          // success: show a small green confirmation then redirect
+          showMsg("Signed in successfully.", "#a4eb3f");
+          // keep the font-family consistent (signinMsg already styled) and redirect after a short delay
+          setTimeout(() => {
+            window.location.href = "homepage.html";
+          }, 1500);
         } catch (e) {
           showMsg("An error occurred. Try again.");
         }
