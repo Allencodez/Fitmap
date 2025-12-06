@@ -11,7 +11,15 @@
       rel="stylesheet"
     />
   <link rel="stylesheet" href="../style.css" />
-  
+  <style>
+    /* selected visual only - keep layout unchanged */
+    .Em-days-1.selected, .Em-days.selected, .Em-week-1.selected, .Em-weeks.selected {
+      background-color: #ffffff !important;
+      color: #000 !important;
+      border-radius: 8px;
+      box-shadow: 0 1px 2px rgba(0,0,0,0.06);
+    }
+  </style>
   </head>
   <body>
     <div class="Em-Container">
@@ -71,28 +79,27 @@
       const timeBoxes = Array.from(document.querySelectorAll('.Em-week-1, .Em-weeks'));
       const continueBtn = document.getElementById('continueBtn');
 
-      function clearGroup(group) {
-        group.forEach(el => el.classList.remove('selected'));
-      }
-
-      function toggleSelection(el, group) {
-        // allow only one selection per group
-        clearGroup(group);
-        el.classList.add('selected');
-      }
-
       function updateContinueState() {
         const daySelected = dayBoxes.some(b => b.classList.contains('selected'));
         const timeSelected = timeBoxes.some(b => b.classList.contains('selected'));
         continueBtn.disabled = !(daySelected && timeSelected);
       }
 
-      dayBoxes.forEach(b => b.addEventListener('click', () => { toggleSelection(b, dayBoxes); updateContinueState(); }));
-      timeBoxes.forEach(b => b.addEventListener('click', () => { toggleSelection(b, timeBoxes); updateContinueState(); }));
+      function toggle(el) {
+        // toggle selected class on the clicked element
+        if (el.classList.contains('selected')) {
+          el.classList.remove('selected');
+        } else {
+          el.classList.add('selected');
+        }
+      }
+
+      dayBoxes.forEach(b => b.addEventListener('click', () => { toggle(b); updateContinueState(); }));
+      timeBoxes.forEach(b => b.addEventListener('click', () => { toggle(b); updateContinueState(); }));
 
       continueBtn.addEventListener('click', () => {
         if (continueBtn.disabled) return;
-        // optional: pass selected day/time via query params
+        // pick first selected day/time to pass along (or multiple could be handled)
         const day = dayBoxes.find(b => b.classList.contains('selected'))?.textContent.trim();
         const time = timeBoxes.find(b => b.classList.contains('selected'))?.textContent.trim();
         const params = new URLSearchParams();

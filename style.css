@@ -1062,6 +1062,7 @@ input::placeholder {
   font-size: 20px;
   padding-top: 12px;
   margin-right: 10px;
+  color: #121212;
 }
 
 #gramps {
@@ -1084,6 +1085,7 @@ input::placeholder {
 .z-class {
   display: flex;
   flex-direction: column;
+  gap: 1px;
 }
 
 img {
