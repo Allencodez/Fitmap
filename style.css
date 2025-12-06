@@ -1186,7 +1186,7 @@ img {
   font-family: poppins;
   font-size: 18px;
   margin-top: 10px;
-  /* margin-bottom: 10px; */
+  margin-bottom: 10px;
 }
 
 .b-text {
@@ -2141,4 +2141,93 @@ hr {
   top: 8px;
   left: 30px;
   border-radius: 5px;
+}
+
+/* HELP CENTER */
+
+.help-card{
+  background-color: lightgray;
+  border-radius: 10px;
+  padding: 5px 10px;
+  margin-bottom: 10px;
+  width: 80%;
+  margin-left: 40px;
+}
+
+.h-text{
+  color: black;
+  font-family: poppins;
+  font-size: 18px;
+  padding: 10px;
+  margin-left: 10px;
+}
+
+.h-text-1{
+  color: black;
+  font-family: poppins;
+  font-size: 18px;
+  padding: 10px 20px;
+}
+
+.help-dc{
+  display: flex;
+  padding: 5px 30px;
+  margin-bottom: 10px;
+  margin-left: 40px;
+  gap: 40px;
+}
+
+.help-1{
+  background-color: lightgray;
+  border-radius: 10px;
+}
+
+.help-2{
+  background-color: lightgray;
+  border-radius: 10px;
+  width: 62.5%;
+  margin: auto;
+  text-align: center;
+  margin-bottom: 100px;
+}
+
+/* INVITE PAGE */
+
+.ref-card{
+   background-color: lightgray;
+   border: 10px;
+   margin-bottom: 30px;
+   width: 90%;
+   margin-left: 20px;
+   /* margin: auto; */
+   border-radius: 15px;
+}
+
+.ref{
+  display: flex;
+  justify-content: space-between;
+}
+
+#rf-img{
+    width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  /* display: block; */
+  margin-top: 10px;
+  margin-right: 10px;
+
+}
+
+.ref-btn{
+  padding: 5px;
+  margin-bottom: 10px;
+  border-radius: 10px;
+  font-family: poppins;
+  font-size: 16px;
+  margin-left: 80%;
+  background-color: #a4eb3f;
+}
+
+.r-shift{
+  margin-bottom: 100px;
 }

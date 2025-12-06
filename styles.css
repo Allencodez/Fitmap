@@ -21,8 +21,8 @@
 
 .commencer {
   background-color: var(--background-color);
-  width: 100vw;
-  /* margin: auto; */
+  max-width: 100vw;
+  margin: auto;
 }
 
 .sticky-bar {
@@ -36,6 +36,7 @@
 .Container {
   width: 100vw;
   padding: 20px;
+  margin: auto;
 }
 
 .wrapper {
@@ -199,7 +200,7 @@ a {
   align-items: center;
   width: 100vw;
   gap: 15px;
-  /* height: 200%; */
+  height: 200%;
   overflow: auto;
 }
 
