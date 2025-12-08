@@ -69,7 +69,9 @@
       </div>
 
       <div>
-        <p id="bookingHint" style="color:#666; font-size:0.95rem; font-family: poppins; margin-bottom:8px;">Select at least one category and fill all fields to enable booking.</p>
+        <p id="bookingHint" style="color:#666; font-size:0.95rem; 
+        font-family: poppins; margin-left: 10px;
+         margin-bottom:8px;">Select a category and fill all fields to enable booking.</p>
         <button id="bookNow" class="B-button" disabled>Book Now</button>
       </div>
 
@@ -105,6 +107,7 @@
 
 
     </div>
+    
     <script>
       (function(){
         const boxes = Array.from(document.querySelectorAll('.B-box'));
@@ -123,7 +126,7 @@
         function update() {
           if (anyBoxChecked() && inputsFilled()) {
             bookBtn.disabled = false;
-            hint.style.display = 'none';
+            hint.style.display = 'block';
           } else {
             bookBtn.disabled = true;
             hint.style.display = 'block';
