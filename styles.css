@@ -152,6 +152,7 @@ input::placeholder {
 
 .tabs .tab-active {
   background-color: var(--text-color);
+  color: var(--main-color);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -220,7 +221,7 @@ body.search-active .card-slider {
   background-blend-mode: darken;
   margin-bottom: 10px;
   overflow: auto;
-}
+}  
 
 .inner-cards.hidden {
   display: none;
