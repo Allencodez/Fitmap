@@ -44,20 +44,22 @@ body {
 .logo-name {
   font-size: 30px;
   font-family: poppins;
-  margin-left: 10px;
+  /* margin-left: 10px; */
 }
 
 .page-1 {
   height: 100vh;
-  width: 100vw;
+  width: 100%;
   background-image: url("./Assets/images/img1.jpg");
   background-size: cover;
   background-repeat: no-repeat;
-  filter: brightness(80%);
+  background-position: center;
+  filter: brightness(70%);
   display: flex;
   justify-content: center;
   align-items: center;
   color: white;
+  background-color: #121212;
 }
 
 .btn-1 {
@@ -144,12 +146,15 @@ a {
   background-image: url("./Assets/images/img2.jpg");
   background-size: cover;
   background-repeat: no-repeat;
+  background-position: center;
   height: 100vh;
-  filter: brightness(80%);
+  width: 100%;
+  filter: brightness(70%);
   display: flex;
   justify-content: center;
   align-items: center;
   color: white;
+  background-color: #121212;
 }
 
 .content {
@@ -224,8 +229,11 @@ a {
 .page-3 {
   background-size: cover;
   background-repeat: no-repeat;
+  background-position: center;
+  background-color: #121212;
   height: 100vh;
-  filter: brightness(80%);
+  width: 100%;
+  filter: brightness(70%);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -303,7 +311,7 @@ a {
 .btn-3-1 {
   display: flex;
   justify-content: center;
-  margin: auto;
+  margin: 20px auto;
   background-color: #a4eb3f;
   padding: 10px 30px;
   border: none;
@@ -1115,6 +1123,23 @@ img {
   margin: auto;
 }
 
+.pp-foot-1 {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 100%;
+  height: 12%;
+  cursor: pointer;
+  overflow-x: auto;
+  overflow-y: hidden;
+  z-index: 2;
+  bottom: 0;
+  position: fixed;
+  background-color: #2a2a2a;
+  margin-top: 30px;
+  margin: auto;
+}
+
 .ap-foot {
   display: flex;
   justify-content: space-around;
@@ -1202,6 +1227,12 @@ img {
   flex-direction: column;
 }
 
+.pp-foot-1 .tags {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
 .tags-classes {
   margin-bottom: 1px;
 }
@@ -1230,6 +1261,7 @@ img {
 
 .A-container {
   background-color: #121212;
+  margin: auto;
 }
 
 .A-play {
@@ -1368,6 +1400,25 @@ img {
   cursor: pointer;
 }
 
+/* Mobile footer fix: ensure footer sits at bottom and fits on very small screens */
+@media (max-width: 400px) {
+  .foot,
+  .pp-foot-1,
+  .pp-foot,
+  .pm-foot,
+  .ap-foot,
+  .oh-foot,
+  .hp-foot {
+    left: 0 !important;
+    right: 0 !important;
+    width: 100% !important;
+    padding: 6px 6px !important;
+    box-sizing: border-box !important;
+    justify-content: space-between !important;
+    gap: 6px !important;
+  }
+}
+
 .t-set-7 {
   display: flex;
 }
@@ -1434,14 +1485,13 @@ img {
 
 .C-container {
   background-color: #2a2a2a;
-  /* height: 125%; */
   display: flex;
   flex-direction: column;
   justify-content: center;
 }
 
 .C-shift {
-  margin-bottom: 120px;
+  margin-bottom: 80px;
 }
 
 .C-text {
@@ -2483,15 +2533,15 @@ hr {
 }
 
 @media screen and (min-width: 428px) {
-  .foot {
+  /* .foot {
     min-width: 428px;
     left: 0;
     right: 0;
     position: fixed;
-  }
+  } */
 
   .M-ctn {
-    m-width: 428px;
+    max-width: 428px;
     margin: auto;
     border-radius: 10px;
     border: 3px solid black;
@@ -2504,6 +2554,10 @@ hr {
     margin: auto;
     border: 3px solid black;
     border-radius: 10px;
+  }
+
+  .shift {
+    margin-bottom: 80px;
   }
 
   .B-container {
@@ -2525,7 +2579,7 @@ hr {
   }
 
   .Pf-container {
-    max-width: 340px;
+    max-width: 360px;
     margin: auto;
     border: 3px solid black;
     border-radius: 10px;
@@ -2538,10 +2592,10 @@ hr {
 
   .payment-page {
     margin: auto;
-    min-width: 340px;
+    min-width: 400px;
     border: 3px solid black;
     border-radius: 10px;
-    margin: auto;
+    box-sizing: border-box;
   }
 
   .P-cards {
@@ -2597,35 +2651,22 @@ hr {
   }
 
   #map {
-    max-width: 350px;
+    width: 360px;
+    max-width: 375px;
   }
 
   .details {
-    max-width: 350px;
+    min-width: 360px;
     margin: 20px auto 20px;
   }
 
   .s-a-c {
     max-width: 320px;
-    /* margin-left: 39%; */
     text-align: center;
   }
 
-  /* .A-container {
-    max-width: 360px;
-    margin-inline: auto;
-    border: 3px solid black;
-    border-radius: 10px;
-  }
-
-  .A-card {
-    margin-left: 5px;
-    margin-right: 5px;
-    min-height: 300px;
-  } */
-
   .M-ctn {
-    max-width: 360px;
+    max-width: 380px;
     margin: auto;
     border-radius: 10px;
     border: 3px solid black;
@@ -2656,6 +2697,13 @@ hr {
 
   .Container {
     max-width: 380px;
+    margin: 0 auto;
+    border: 3px solid black;
+    border-radius: 10px;
+  }
+
+  .A-container {
+    max-width: 400px;
     margin: 0 auto;
     border: 3px solid black;
     border-radius: 10px;
@@ -2791,7 +2839,14 @@ hr {
   }
 
   .pp-foot {
-    max-width: 340px;
+    max-width: 360px;
+    left: 0;
+    right: 0;
+    position: fixed;
+  }
+
+  .pp-foot-1 {
+    max-width: 400px;
     left: 0;
     right: 0;
     position: fixed;
@@ -2813,6 +2868,13 @@ hr {
 
   .oh-foot {
     max-width: 350px;
+    left: 0;
+    right: 0;
+    position: fixed;
+  }
+
+  .ap-foot {
+    max-width: 400px;
     left: 0;
     right: 0;
     position: fixed;
