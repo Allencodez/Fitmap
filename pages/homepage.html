@@ -25,14 +25,14 @@
             <a href="./profile.html">
               <div class="image-pfp">
                 <img
-                  src="../Assets/images/aceb6e232b6272af327c34340242d1f81e5813a2.jpg"
+                  src="../Assets/Icons/Group (3).png"
                   alt="#"
                 /></div
             ></a>
 
             <a href="./class.html">
               <div class="image">
-                <img src="../Assets/Icons/bell (1).png" alt="#" /></div
+                <img id="bell-icon" src="../Assets/Icons/bell (1).png" alt="#" /></div
             ></a>
           </div>
         </div>
@@ -249,6 +249,34 @@
             clearFooterActive();
             tag.classList.add("active");
           });
+        });
+
+        // populate user name and profile image from localStorage (fitmap_user)
+        function updateUserFromStorage() {
+          try {
+            const raw = localStorage.getItem("fitmap_user");
+            const user = raw ? JSON.parse(raw) : null;
+            if (user) {
+              const headerTxt = document.querySelector(".header-txt p");
+              if (headerTxt && user.name)
+                headerTxt.textContent = `Hi, ${user.name}`;
+
+              const pfpImg = document.querySelector(".image-pfp img");
+              if (pfpImg && user.profileImage) pfpImg.src = user.profileImage;
+            }
+          } catch (e) {
+            // ignore parsing errors
+          }
+        }
+
+        updateUserFromStorage();
+
+        // react to storage changes (other tabs/windows) and when tab becomes visible again
+        window.addEventListener("storage", function (e) {
+          if (e.key === "fitmap_user") updateUserFromStorage();
+        });
+        document.addEventListener("visibilitychange", function () {
+          if (document.visibilityState === "visible") updateUserFromStorage();
         });
       });
     </script>

@@ -42,16 +42,63 @@
           <div>
             <label class="login-p-name" data-i18n="password">Password</label>
           </div>
+        </div>
 
-          <div>
-            <input
-              id="si-pass"
-              class="login-p-text"
-              type="password"
-              data-i18n="password"
-              placeholder="********"
-            />
-          </div>
+        <div class="input-wrap">
+          <input
+            id="si-pass"
+            class="login-p-text"
+            type="password"
+            placeholder="********"
+            required
+            aria-describedby="toggle-password"
+          />
+
+          <button
+            id="toggle-password"
+            class="pw-toggle"
+            type="button"
+            aria-label="Show password"
+            title="Show password"
+          >
+            <!-- eye closed (hidden) -->
+            <svg
+              class="icon icon-eye"
+              xmlns="http://www.w3.org/2000/svg"
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+            >
+              <path
+                d="M17.94 17.94A10.94 10.94 0 0 1 12 20c-5 0-9.27-3-11-8 1.08-2.7 2.95-4.89 5.24-6.34"
+              />
+              <path d="M1 1l22 22" />
+            </svg>
+            <!-- eye open (visible) - hidden by default -->
+            <svg
+              class="icon icon-eye-open"
+              xmlns="http://www.w3.org/2000/svg"
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+              style="display: none"
+            >
+              <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8S1 12 1 12z" />
+              <circle cx="12" cy="12" r="3" />
+            </svg>
+          </button>
         </div>
 
         <div class="login-checks">
@@ -146,15 +193,15 @@
           return;
         }
 
-        if (emailVal.toLowerCase() !== (stored.email || "").toLowerCase()) {
-          btn.disabled = true;
-          showMsg("We can't find an account with that email.");
-          return;
-        }
+        // require email and password to exactly match stored credentials
+        const emailMatches =
+          emailVal.toLowerCase() === (stored.email || "").toLowerCase();
+        const passMatches = passVal === (stored.password || "");
 
-        if (!passVal || passVal.length < 6) {
+        if (!emailMatches || !passMatches) {
           btn.disabled = true;
-          showMsg("Password must be at least 6 characters.");
+          // prefer generic message to avoid leaking account existence
+          showMsg("Email or password is incorrect.");
           return;
         }
 
@@ -213,5 +260,30 @@
 
       validate();
     });
+
+    // Toggle password visibility
+    (function () {
+      const input = document.getElementById("si-pass");
+      const btn = document.getElementById("toggle-password");
+      const eye = btn.querySelector(".icon-eye");
+      const eyeOpen = btn.querySelector(".icon-eye-open");
+
+      btn.addEventListener("click", function () {
+        const isPassword = input.type === "password";
+        input.type = isPassword ? "text" : "password";
+        // swap icons
+        if (isPassword) {
+          eye.style.display = "none";
+          eyeOpen.style.display = "";
+          btn.setAttribute("aria-label", "Hide password");
+          btn.title = "Hide password";
+        } else {
+          eye.style.display = "";
+          eyeOpen.style.display = "none";
+          btn.setAttribute("aria-label", "Show password");
+          btn.title = "Show password";
+        }
+      });
+    })();
   </script>
 </html>

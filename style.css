@@ -577,6 +577,30 @@ input::placeholder {
   border: 2px solid grey;
 }
 
+.input-wrap {
+  position: relative;
+  width: 100%;
+}
+
+.pw-toggle {
+  position: absolute;
+  right: 12%;
+  top: 50%;
+  transform: translateY(-50%);
+  background: transparent;
+  border: none;
+  padding: 4px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: #555;
+}
+
+.icon {
+  display: block;
+}
+
 .login-checks {
   margin-left: 55%;
   font-size: 18px;

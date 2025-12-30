@@ -57,6 +57,11 @@
   border-radius: 50%;
 }
 
+#bell-icon{
+  height: 25px;
+  width: 25px;
+}
+
 #search {
   margin: auto;
   margin-left: 10px;

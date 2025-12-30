@@ -3,6 +3,113 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Document</title>
+  </head>
+  <body>
+
+
+   
+
+
+
+    <div>
+      <label class="names" for="su-pass">Password</label>
+    </div>
+
+    <div class="input-wrap">
+      <input
+        id="su-pass"
+        class="login-p-text"
+        type="password"
+        placeholder="********"
+        required
+        aria-describedby="toggle-password"
+      />
+
+      <button
+        id="toggle-password"
+        class="pw-toggle"
+        type="button"
+        aria-label="Show password"
+        title="Show password"
+      >
+        <!-- eye closed (hidden) -->
+        <svg
+          class="icon icon-eye"
+          xmlns="http://www.w3.org/2000/svg"
+          width="20"
+          height="20"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          aria-hidden="true"
+        >
+          <path
+            d="M17.94 17.94A10.94 10.94 0 0 1 12 20c-5 0-9.27-3-11-8 1.08-2.7 2.95-4.89 5.24-6.34"
+          />
+          <path d="M1 1l22 22" />
+        </svg>
+        <!-- eye open (visible) - hidden by default -->
+        <svg
+          class="icon icon-eye-open"
+          xmlns="http://www.w3.org/2000/svg"
+          width="20"
+          height="20"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          aria-hidden="true"
+          style="display: none"
+        >
+          <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8S1 12 1 12z" />
+          <circle cx="12" cy="12" r="3" />
+        </svg>
+      </button>
+    </div>
+
+    <script>
+      // Toggle password visibility
+      (function () {
+        const input = document.getElementById("su-pass");
+        const btn = document.getElementById("toggle-password");
+        const eye = btn.querySelector(".icon-eye");
+        const eyeOpen = btn.querySelector(".icon-eye-open");
+
+        btn.addEventListener("click", function () {
+          const isPassword = input.type === "password";
+          input.type = isPassword ? "text" : "password";
+          // swap icons
+          if (isPassword) {
+            eye.style.display = "none";
+            eyeOpen.style.display = "";
+            btn.setAttribute("aria-label", "Hide password");
+            btn.title = "Hide password";
+          } else {
+            eye.style.display = "";
+            eyeOpen.style.display = "none";
+            btn.setAttribute("aria-label", "Show password");
+            btn.title = "Show password";
+          }
+        });
+      })();
+    </script>
+  </body>
+</html>
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -18,7 +125,7 @@
         <div class="Pf-header">
           <img
             id="Ep-img"
-            src="./Assets/images/Rectangle 1.png"
+            src="./Assets/images/0ba6ead5b02629822286d3beae0c9a596103ba17.png"
             alt="profile"
           />
           <img
@@ -272,3 +379,49 @@
   </script>
   <script src="./js/i18n.js"></script>
 </html>
+
+
+
+
+.login-p-text {
+  border-radius: 25px;
+  padding: 10px 44px 10px 20px;
+  margin-left: 0;
+  width: 100%;
+  box-sizing: border-box;
+  margin-top: 10px;
+  line-height: 30px;
+  font-size: 20px;
+  margin-bottom: 10px;
+  border: 2px solid grey;
+}
+
+.input-wrap {
+  position: relative;
+  width: 100%;
+  max-width: 420px;
+}
+
+.pw-toggle {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: transparent;
+  border: none;
+  padding: 4px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: #555;
+}
+
+.pw-toggle:focus {
+  outline: 2px solid #4d90fe;
+  border-radius: 4px;
+}
+
+.icon {
+  display: block;
+}
