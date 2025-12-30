@@ -1839,14 +1839,13 @@ input[type="checkbox"]:checked {
 .Pf-header {
   margin: auto;
   position: relative;
-  width: 150px;
-  height: 150px;
+  width: 120px;
+  height: 120px;
 }
 
 #Pf-img {
   width: 100px;
   height: 100px;
-  margin-left: 20px;
 }
 
 .Pf-text {
@@ -2002,6 +2001,7 @@ span {
   display: flex;
   justify-content: center;
   margin-bottom: 30px;
+  margin-bottom: 80px;
 }
 #Ep-img {
   height: 130px;
